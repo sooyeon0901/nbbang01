@@ -81,7 +81,7 @@
       </li>
       <li>
         <a href="#">
-          <i class="zmdi zmdi-comment-more"></i> New
+          <i class="zmdi zmdi-comment-more"></i> new
         </a>
       </li>
     </ul>

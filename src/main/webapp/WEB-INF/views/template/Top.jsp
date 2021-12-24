@@ -48,6 +48,10 @@
 	href="<%=request.getContextPath()%>/resources/css/template.css" />
 <script
 	src="<c:url value="/resources/js/JQuery_js/jquery-3.6.0.min.js"/>"></script>
+	
+<!-- 서머노트를 위해 추가해야할 부분 -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/summernote/summernote-lite.css">
+    
 </head>
 <style>
 .dropbtn {
@@ -171,6 +175,7 @@
 										onclick="location.href='recommand.do'">추천</a>
 										<div class="dropdown-content">
 											<a onclick="location.href='recommandBbs.do'">추천게시판</a>
+									    	<a onclick="location.href='freeBbs.do'">자유게시판</a>
 										</div></li>
 									<li class="login_menu" style="float: right"><a
 										id="memberlogout">로그아웃</a></li>

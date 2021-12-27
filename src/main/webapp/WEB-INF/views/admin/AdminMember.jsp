@@ -4,7 +4,12 @@
 <!-- 회원 관리 페이지 -->
 
 <%@ include file="/WEB-INF/views/template/AdminTop.jsp"%>
+<style>
+	.pagination{
+		margin-left:350px;
+	}
 
+</style>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -21,8 +26,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">회원 관리</h1>
-                    <p class="mb-4">기본 정보를 분석하고 신고된 회원을 관리합니다.</p>
+                    <h1 class="h3 mb-2 text-gray-800">회원 Overview</h1>
+                    <p class="mb-4">전체 회원의 기본 정보를 알 수 있습니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -43,8 +48,6 @@
                                             <th>UserType</th>
                                             <th>Preference</th>
                                             <th>Registdate</th>
-                                            <th>신고수</th>
-                                            <th>정지</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -58,8 +61,6 @@
                                             <td>1</td>
                                             <td>$320,800</td>
                                             <td>$320,800</td>
-                                            <td>0</td>
-                                            <td>버튼</td>
                                         </tr>
                                         <tr>
                                             <td>Garrett Winters</td>
@@ -71,12 +72,37 @@
                                             <td>$320,800</td>
                                             <td>$170,750</td>
                                             <td>$320,800</td>
-                                            <td>0</td>
-                                            <td>버튼</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
+                            
+                            
+                            <div id="dataTable_wapper" class="dataTables_wapper dt-bootstrap4">
+                                	<div class="row">
+                                		<div class="col-sm-12 col-md-5">
+                                			<div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
+                                				Showing 1 to 10 of all entries
+                                			</div>
+                                		
+                                		</div>
+                                		<div class="col-sm-12 col-md-7">
+                                			<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                                				<ul class="pagination">
+                                					<li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                					<li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                					<li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                					<li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+                                					<li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+                                					<li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+                                					<li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
+                                					<li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                                				</ul>
+                                			</div>
+                                		</div>
+                                	</div>
+                                </div><!-- 페이지네이션 끝 -->
+                            
                         </div>
                     </div>
 
@@ -101,5 +127,6 @@
 
     </div>
     <!-- End of Page Wrapper -->
+
 
 <%@ include file="/WEB-INF/views/template/AdminFooter.jsp"%>

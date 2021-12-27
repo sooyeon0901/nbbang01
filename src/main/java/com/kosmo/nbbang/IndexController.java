@@ -97,6 +97,19 @@ public class IndexController {
 	public String recommandBbs() {
 		return "recommand/RecommandBbs.tiles";
 	}
+	//자유 게시판
+	@RequestMapping("/freeBbs.do")
+	public String freeBbs() {
+		return "recommand/FreeBbs.tiles";
+	}//추천,자유게시판 글쓰기
+	@RequestMapping("/recommandWrite.do")
+	public String recommandWrite() {
+		return "recommand/RecommandWrite.tiles";
+	}//추천,자유게시판 상세보기
+	@RequestMapping("/recommandView.do")
+	public String recommandView() {
+		return "recommand/RecommandView.tiles";
+	}
 	
 	
 	//가이드
@@ -112,10 +125,10 @@ public class IndexController {
 	public String admin() {
 		return "admin/AdminMain";
 	}
-	@RequestMapping("/adminmember.do")
+	/*@RequestMapping("/adminmember.do")
 	public String adminMember() {
 		return "admin/AdminMember";
-	}
+	}*/
 	@RequestMapping("/adminparty.do")
 	public String adminParty() {
 		return "admin/AdminParty";

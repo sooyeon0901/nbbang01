@@ -15,13 +15,14 @@
 	<!-- 클래스 별칭 설정 -->	
 	  
 	<typeAliases>
-		<typeAlias type="com.kosmo.nbbang.admin.service.AdminMemberDTO" alias="adminMember"/>		
+		<typeAlias type="com.kosmo.nbbang.admin.service.AdminMemberDTO" alias="adminMember"/>
+		<typeAlias type="com.kosmo.nbbang.partykang.service.PartyChatDTO" alias="chat"/>		
 		<!-- LineCommentDTO는 별칭 불필요. SELECT결과를 Map에 저장하기때문에 -->
 	</typeAliases>
 	
-	<!-- 매퍼파일(SQL쿼리 결과와 자바빈 매핑)의 위치정보 설정 -->
-	  
+	<!-- 매퍼파일(SQL쿼리 결과와 자바빈 매핑)의 위치정보 설정 -->	  
 	<mappers>
-		<mapper resource="admin/mybatis/mapper/admin.xml" />			
+		<mapper resource="admin/mybatis/mapper/admin.xml" />
+		<mapper resource="admin/mybatis/mapper/chat.xml" />
 	</mappers>
 </configuration>

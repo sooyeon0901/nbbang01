@@ -53,12 +53,12 @@ public class IndexController {
 	public String partyBbsView() {
 		return "party/PartyBbsView.tiles";
 	}
-	
+	/*
 	//파티 채팅
 	@RequestMapping("/partyChat.do")
 	public String partyChat() {
 		return "party/PartyChat.tiles";
-	}
+	}*/
 	//파티원 게시판 글작성
 	@RequestMapping("/partyBbsWrite.do")
 	public String partyBbsWrite() {

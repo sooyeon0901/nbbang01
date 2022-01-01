@@ -20,28 +20,24 @@
 	<div class="row">
 		<ul class="nav nav-pills nav-stacked col-sm-3"
 			style="overflow: auto; height: 457px;">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Messages</a></li>
-			<li><a href="#">Messages</a></li>
-			<li><a href="#">Messages</a></li>
-			<li><a href="#">Messages</a></li>
-			<li><a href="#">Messages</a></li>
-			<li><a href="#">Messages</a></li>
-			<li><a href="#">Messages</a></li>
-			<li><a href="#">Messages</a></li>
-			<li><a href="#">Messages</a></li>
-			<li><a href="#">Messages</a></li>
-			<li><a href="#">Messages</a></li>
+			<c:if test="${not empty chatList}" var="emptyList">
+				<c:forEach items="${chatList}" var="item">
+					<li><a href="${item.partyno}">${nickname.get(item.chatpartnerid)}님과 채팅중입니다</a></li>
+				</c:forEach>
+			</c:if>
+			<c:if test="${!emptyList}">
+				<li><a href="#">채팅이 없습니다</a></li>
+			</c:if>
 		</ul>
 		<div class="col-sm-9 row">
 			<div class="col-md-12" style="padding-bottom: 5px">
 				<div class="col-md-2" style="padding-top: 5px;">
 					<h4>대화내용</h4>
 				</div>
-				<div class="col-md-offset-10" style="padding-left: 10px;">
+				<div class="col-md-offset-9" style="padding-left: 20px;">
+					<button type="button" class="btn btn-danger">신고</button>
 					<button type="button" class="btn btn-success">확정</button>
-					<button type="button" class="btn btn-danger">나가기</button>
+					<button type="button" class="btn btn-waring">나가기</button>
 				</div>
 			</div>
 			<div class="col-md-12" style="padding-bottom: 5px">

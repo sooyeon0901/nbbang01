@@ -112,12 +112,17 @@
 						
 						<!-- 소셜 로그인 영역 -->
 						<p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
-						<div class="social d-flex text-center">
-							<a href="#" class="px-2 py-2 mr-md-1 rounded"><span
-								class="ion-logo-facebook mr-2"></span> Kakao</a> 
-								<a href="#" class="px-2 py-2 ml-md-1 rounded"><span
-								class="ion-logo-twitter mr-2"></span> Goolge</a>
-						</div>
+						<ul style="list-style: none; padding-left:0px; text-align: center;">
+							<li>
+								<!-- Kakao Button -->
+								<a href="javascript:kakaoLogin();"><img src="<%=request.getContextPath()%>/resources/images/social_login_logo/kakao_login_btn.png" alt="카카오 로그인"/></a>
+	                   		</li>
+	                   		<li>
+	                   			<!-- Naver Button -->
+	                   			<!-- 네이버 로그인 버튼 노출 영역 -->
+    							<div id="naver_id_login"></div>
+							</li>
+						</ul>
 						<!-- 소셜 로그인 아래 아이콘으로 대체 가능 -->
 						<!-- 
 				          <p class="social-media d-flex justify-content-center">
@@ -125,13 +130,63 @@
 							<a href="#" class="social-icon facebook d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
 							<a href="#" class="social-icon twitter d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
 						  </p>
-						   -->
+						-->
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<!-- 카카오로그인 스크립트 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script>
+		//315727d24edb4c7412171ffec5f8d047
+		window.Kakao.init("315727d24edb4c7412171ffec5f8d047");
 
+		function kakaoLogin() {
+		    console.log('시작')
+		    window.Kakao.Auth.login({
+		      scope:'account_email,gender,age_range,birthday',
+		      success: function(authObj){
+		        console.log(authObj);
+		        window.Kakao.API.request({
+		          url:'/v2/user/me',
+		          success: res=> {
+		            const kakao_account = res.kakao_account;
+		            console.log(kakao_account);
+		          }
+		        });
+		      }
+		    });
+		}
+	</script>
+	<!-- 네이버로그인 스크립트
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "IDTJqfsvpsBdWUOIxuQ6",
+				callbackUrl: "http://127.0.0.1:5500/Login/Naver_callback.html",
+				isPopup: false, /* 팝업을 통한 연동처리 여부 */
+				loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
+			}
+		);
+		
+		/* 설정정보를 초기화하고 연동을 준비 */
+		naverLogin.init();
+		
+	</script> -->
+	
+    <!-- //네이버 로그인 버튼 노출 영역 -->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript">
+  		var naver_id_login = new naver_id_login("5vJ27b1p_lyH_cEGabdU", "lLz670SL2n");
+	  	var state = naver_id_login.getUniqState();
+	  	naver_id_login.setButton("green",3,60);
+	  	naver_id_login.setDomain("http://localhost:8080/nbbang/index.do");
+	  	naver_id_login.setState(state);
+	  	naver_id_login.setPopup();
+	  	naver_id_login.init_naver_id_login();
+    </script>
 </body>
 </html>
 

@@ -1,10 +1,13 @@
 package com.kosmo.nbbang.hwang.service;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Getter
 @Setter
@@ -12,30 +15,28 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ussrDTO {
-	
-	private String ussrno;
+	private String ussno;
 	private String ussrtitle;
 	private String ussrcontent;
-	private java.sql.Date ussrpostDate;
+	private java.sql.Date ussrpostdate;
 	private String ussroriginfilenames;
 	private String ussrrealfilenames;
-	private String ussrcategoryname;
+	private String ussrcateforyname;
 	private String email;
 	
 	//각 글에 따른 댓글 총수 저장용
-	//private String commentCount;
-			
+	private String commentCount;
+		
 	//no에 따른 모든 한줄 댓글 목록 저장용
 	//마이바티스의 ResultMap 태그의 collection태그 적용용
-	//List<ussrCommentDTO> comments;
-	
-	//lombok 미사용시 getter,setter
+	List<ussrCommentDTO> comments;
+
 	/*
-	public String getUssrno() {
-		return ussrno;
+	public String getUssno() {
+		return ussno;
 	}
-	public void setUssrno(String ussrno) {
-		this.ussrno = ussrno;
+	public void setUssno(String ussno) {
+		this.ussno = ussno;
 	}
 	public String getUssrtitle() {
 		return ussrtitle;
@@ -49,11 +50,11 @@ public class ussrDTO {
 	public void setUssrcontent(String ussrcontent) {
 		this.ussrcontent = ussrcontent;
 	}
-	public java.sql.Date getUssrpostDate() {
-		return ussrpostDate;
+	public java.sql.Date getUssrpostdate() {
+		return ussrpostdate;
 	}
-	public void setUssrpostDate(java.sql.Date ussrpostDate) {
-		this.ussrpostDate = ussrpostDate;
+	public void setUssrpostdate(java.sql.Date ussrpostdate) {
+		this.ussrpostdate = ussrpostdate;
 	}
 	public String getUssroriginfilenames() {
 		return ussroriginfilenames;
@@ -67,11 +68,11 @@ public class ussrDTO {
 	public void setUssrrealfilenames(String ussrrealfilenames) {
 		this.ussrrealfilenames = ussrrealfilenames;
 	}
-	public String getUssrcategoryname() {
-		return ussrcategoryname;
+	public String getUssrcateforyname() {
+		return ussrcateforyname;
 	}
-	public void setUssrcategoryname(String ussrcategoryname) {
-		this.ussrcategoryname = ussrcategoryname;
+	public void setUssrcateforyname(String ussrcateforyname) {
+		this.ussrcateforyname = ussrcateforyname;
 	}
 	public String getEmail() {
 		return email;
@@ -79,7 +80,17 @@ public class ussrDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(String commentCount) {
+		this.commentCount = commentCount;
+	}
+	public List<ussrCommentDTO> getComments() {
+		return comments;
+	}
+	public void setComments(List<ussrCommentDTO> comments) {
+		this.comments = comments;
+	}
 	*/
-	
 }
-

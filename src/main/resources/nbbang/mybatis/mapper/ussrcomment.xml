@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="nbbang.mybatis.mapper.ussrcomment">
+	<select id="ussrCommentListsUsingCollection" parameterType="Map" resultType="ussrCommentDTO">
+		SELECT c.*,m.name 
+		FROM member m JOIN ussrcomment c ON m.email=c.email
+		WHERE ussrno = #{ussrno}
+		ORDER BY comno DESC
+	</select>
+	<select id="ussrCommentListsUsingAjax" parameterType="Map" resultType="Map">
+		SELECT c.*,m.name 
+		FROM member m JOIN ussrcomment c ON m.email=c.email
+		WHERE ussrno = #{ussrno}
+		ORDER BY comno DESC
+	</select>  
+	
+	<insert id="ussrCommentInsert" parameterType="Map" >
+		<selectKey keyProperty="comno" resultType="int" order="BEFORE">
+			SELECT SEQ_USSRCOMMENT.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO ussrcomment 
+		VALUES(SEQ_USSRCOMMENTS.CURRVAL,#{comcontent},SYSDATE,#{comoriginfilename},#{comfilename},#{ussrno},#{email})
+		
+	</insert>
+	<update id="ussrCommentUpdate" parameterType="Map">
+		UPDATE ussrcomment SET comcontent=#{comcontent} WHERE comno=#{comno}
+	</update>
+	<delete id="ussrCommentDelete" parameterType="Map">
+		DELETE ussrcomment WHERE comno=#{comno}
+	</delete>
+	<delete id="ussrCommentDeleteByUssrno" parameterType="Map">
+		DELETE ussrcomment WHERE ussrno=#{ussrno}
+	</delete>
+	
+	
+</mapper>

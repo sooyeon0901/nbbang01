@@ -104,32 +104,44 @@ public class IndexController {
 	
 	
 	
-	/*//추천 메인
+	
 	@RequestMapping("/recommand.do")
 	public String recommand() {
 		return "recommand/RecommandMain.tiles";
-	}*/
-	//추천 게시판
+	}//추천 메인
+		
 	/*
-	@RequestMapping("/recommandBbs.do")
+	@RequestMapping("/recommandList.do")
 	public String recommandBbs() {
-		return "recommand/RecommandBbs.tiles";
-	}
+		return "recommand/RecommandList.tiles";
+	}//추천 게시판
 	*/
-	//자유 게시판
-	@RequestMapping("/freeBbs.do")
+	
+	@RequestMapping("/freeList.do")
 	public String freeBbs() {
-		return "recommand/FreeBbs.tiles";
-	}//추천,자유게시판 글쓰기
+		return "recommand/FreeList.tiles";
+	}//자유 게시판
+	
 	@RequestMapping("/recommandWrite.do")
 	public String recommandWrite() {
 		return "recommand/RecommandWrite.tiles";
-	}//추천,자유게시판 상세보기
+	}//추천,자유게시판 글쓰기
+	/*
 	@RequestMapping("/recommandView.do")
 	public String recommandView() {
 		return "recommand/RecommandView.tiles";
-	}
+	}//추천,자유게시판 상세보기
 	
+	@RequestMapping("/recommandEdit.do")
+	public String recommandEdit() {
+		return "recommand/RecommandEdit.tiles";
+	}//추천,자유게시판 글 수정
+	
+	@RequestMapping("/recommandDelete.do")
+	public String recommandDelete() {
+		return "recommand/RecommandDelete.tiles";
+	}//추천,자유게시판 글 삭제
+	*/
 	
 	//가이드
 	@RequestMapping("/guide.do")

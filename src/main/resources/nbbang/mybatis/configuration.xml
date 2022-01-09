@@ -33,7 +33,9 @@
 	  
 	<typeAliases>
 		<typeAlias type="com.kosmo.nbbang.service.MemberDTO" alias="member"/>
-		<typeAlias type="com.kosmo.nbbang.partykang.service.PartyChatDTO" alias="chat"/>		
+		<typeAlias type="com.kosmo.nbbang.partykang.service.PartyChatDTO" alias="chat"/>
+		<typeAlias type="com.kosmo.nbbang.hwang.service.ussrDTO" alias="ussrDTO"/>
+		<typeAlias type="com.kosmo.nbbang.hwang.service.ussrCommentDTO" alias="ussrCommentDTO"/>
 		<!-- LineCommentDTO는 별칭 불필요. SELECT결과를 Map에 저장하기때문에 -->
 	</typeAliases>
 	
@@ -42,5 +44,8 @@
 		<mapper resource="nbbang/mybatis/mapper/admin.xml" />
 		<mapper resource="nbbang/mybatis/mapper/chat.xml" />
 		<mapper resource="nbbang/mybatis/mapper/nbbang-query.xml" />
+		<mapper resource="nbbang/mybatis/mapper/ussr.xml" />
+		<mapper resource="nbbang/mybatis/mapper/ussrcomment.xml" />
+		<mapper resource="nbbang/mybatis/mapper/ussrdynamicsql.xml" />	
 	</mappers>	
 </configuration>

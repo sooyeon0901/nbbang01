@@ -8,30 +8,37 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.kosmo.nbbang.hwang.service.ussrDTO;
 
+@Repository
 public class ussrDAO {
-	
 	@Resource(name = "sqlSessionFactory")
 	private SqlSessionFactory sqlMapper;
-		
+	
 	@Resource(name="template")
 	private SqlSessionTemplate template;
+		
+	public boolean isLogin(Map map) {
+		SqlSession session= sqlMapper.openSession();
+		int count=session.selectOne("ussrIsLogin",map);
+		session.close();
+		return count==1 ? true : false;
+	}
 	
 	public List<ussrDTO> selectList(Map map) {
 		SqlSession session= sqlMapper.openSession();
 		List<ussrDTO> lists=session.selectList("ussrSelectList", map);
 		session.close();
 		return lists;
-	}//selectList
-	
+	}
 	public int getTotalRowCount(Map map) {
 		SqlSession session= sqlMapper.openSession();
-		int total=session.selectOne("memoTotalRowCount",map);
+		int total=session.selectOne("ussrTotalRowCount",map);
 		session.close();
 		return total;
-	}//getTotalRowCount
+	}
 	
 	public int insert(Map map) {
 		SqlSession session= sqlMapper.openSession();
@@ -39,18 +46,17 @@ public class ussrDAO {
 		session.commit();
 		session.close();
 		return affected;
-	}//insert
-
+	}
+	
 	public ussrDTO selectOne(Map map) {		
 		return template.selectOne("ussrSelectOne",map);
-	}//selectOne
-	
+	}
+
 	public int update(Map map) {
 		return template.update("ussrUpdate", map);
-	}//update
+	}
 	
 	public void delete(Map map) {
 		template.delete("ussrDelete", map);		
-	}//delete
-	
+	}
 }

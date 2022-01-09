@@ -150,8 +150,8 @@
 								<li class="dropdown">
 									<a class="dropbtn" onclick="location.href='recommand.do'">추천</a>
 									  <div class="dropdown-content">
-									    <a onclick="location.href='recommandBbs.do'">추천게시판</a>
-									    <a onclick="location.href='freeBbs.do'">자유게시판</a>
+									    <a onclick="location.href='recommandList.do'">추천게시판</a>
+									    <a onclick="location.href='freeList.do'">자유게시판</a>
 									  </div>
 								</li>
 								<li class="login_menu" style="float:right">

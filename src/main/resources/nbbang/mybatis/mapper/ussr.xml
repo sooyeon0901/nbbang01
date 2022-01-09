@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="nbbang.mybatis.mapper.ussr">
+	<resultMap type="ussrDTO" id="ussrDTOResult">
+		<result column="ussrno" property="ussrno"/>
+		<result column="ussrtitle" property="ussrtitle"/>
+		<result column="ussrcontent" property="ussrcontent"/>
+		<result column="ussrpostDate" property="ussrpostDate"/>
+		<result column="ussroriginfilenames" property="ussroriginfilenames"/>
+		<result column="ussrrealfilenames" property="ussrrealfilenames"/>
+		<result column="ussrcateforyname" property="ussrcateforyname"/>
+		<result column="commentCount" property="commentCount"/>		
+		
+		<collection property="ussrcomments" column="ussrno" select="nbbang.mybatis.mapper.ussrcomment.commentListsUsingCollection" javaType="List" ofType="ussrCommentDTO"/> 
+	</resultMap>
+	
+	<select id="ussrIsLogin" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM member WHERE email=#{email} AND password=#{password}		
+	</select>
+	<select id="ussrSelectList" parameterType="Map" resultType="ussrDTO">
+		SELECT * FROM
+		(SELECT T.*,ROWNUM R FROM
+			(SELECT u.*,m.name,(SELECT COUNT(*) FROM ussrcomment WHERE ussrno=u.ussrno) as commentCount FROM 
+				ussrbbs u JOIN member m ON m.email=u.email 
+				<if test="searchWord !=null">
+					WHERE ${searchColumn} LIKE '%' || #{searchWord} || '%'
+				</if>				
+				ORDER BY ussrno DESC) T)
+		WHERE R BETWEEN #{start} AND #{end}
+	</select>
+	<select id="ussrTotalRowCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM ussrbbs u JOIN member m ON m.email=u.email
+		<if test="searchWord !=null">
+			WHERE ${searchColumn} LIKE '%' || #{searchWord} || '%'
+		</if>
+		
+	</select>
+	<insert id="ussrInsert" parameterType="Map" >
+		INSERT INTO ussrbbs
+		VALUES(SEQ_USSRBBS.NEXTVAL,#{ussrtitle},#{ussrcontent},SYSDATE,#{ussroriginfilenames},#{ussrrealfilenames},#{categoryname},#{email})
+	</insert>
+	<select id="ussrSelectOne" parameterType="Map" resultMap="ussrDTOResult">
+		SELECT u.*,m.name FROM
+		member m JOIN ussrbbs u ON m.email=u.email
+		WHERE ussrno=#{ussrno}
+	</select>
+	<update id="ussrUpdate" parameterType="Map">
+		UPDATE ussrbbs SET ussrtitle=#{ussrtitle},ussrcontent=#{ussrcontent},ussroriginfilenames=#{ussroriginfilenames},ussrrealfilenames=#{ussrrealfilenames}
+		WHERE ussrno=#{ussrno}
+	</update>
+	<delete id="ussrDelete" parameterType="Map">
+		DELETE ussrbbs WHERE ussrno=#{ussrno}
+	</delete>
+  
+</mapper>

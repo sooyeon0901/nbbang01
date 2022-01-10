@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	</div>
 </header>
-<div class="container" style="width: 750px; color: black">
+<div class="container" style="width: 600px; color: black">
 	
 	<div style="text-align: center; font-size: 30px; font-weight: bold;">
 		<img src="<%=request.getContextPath()%>/resources/party/001_icon_netflix.png" alt="" style="width: 75px; height: 75px;">Netflix
@@ -38,7 +38,5 @@
 		테스트 내용<br>
 		테스트 내용
 	</div>
-	<div style="padding-top:5px; padding-left:10px; width: 100%; float: left; color: #868e96;">조회수 1</div>
-	<div style="padding-left:10px; padding-right:15px; width: 100%; text-align: right;"><button>대화하기</button></div>
-	<div style="width: 100%; text-align: center;"><button>수정</button> <button>삭제</button> <button>목록</button></div>
+	<div style="padding-left:10px; padding-right:15px; width: 100%; text-align: right;"><button>신고하기</button><button>대화하기</button></div>
 </div>

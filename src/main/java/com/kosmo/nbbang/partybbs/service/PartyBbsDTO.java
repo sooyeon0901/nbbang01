@@ -17,7 +17,6 @@ public class PartyBbsDTO {
 	
 	// 생성자
 	public PartyBbsDTO() {
-		super();
 	}
 	
 	public PartyBbsDTO(String partyNo, String partyTitle, String partyContent, Date partyPostdate,

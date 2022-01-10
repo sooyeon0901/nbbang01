@@ -123,4 +123,43 @@
 	</div>
 	<!-- 페이징 -->
 	<div class="text-center"><a href="#" style="color: black;">&lt;&lt; <strong>1</strong> 2 3 4 5 &gt;&gt;</a></div>
+	
+	<br>
+	<br>
+	<br>
+	
+	<div class="container" style="width: 600px; color: black">
+	
+		<div style="width: 100%; text-decoration: none; padding-bottom: 23px; position: relative; float: left;">
+	   		<div>
+	   			<div style="display: inline-block; float: left; padding-left:10px; margin-right:10px;">
+	   				<img src="<%=request.getContextPath()%>/resources/images/profile/profile_image.png" alt="" style="width: 40px; height: 40px; border-radius: 50%;">
+	   			</div>
+	   			<div style="margin-top:10px; font-weight: bold; float: left;">
+	   				김길동
+	   			</div>
+	   		</div>
+		</div>
+		
+		<div style="width: 100%; float: left;">
+			<h1 style="padding-left:10px; float: left; font-weight: bold;">넷플릭스 프리미엄 파티 구합니다.</h1><h2 style="float: right; color: orange; margin-right: 10px;">(1/4)</h2>
+		</div>
+		<div style="padding-left:10px; width: 100%; float: left; font-weight: bold;">넷플릭스 / 프리미엄</div>
+		<div style="padding-left:10px; width: 100%; float: left; color: #868e96;">2021-12-20</div>
+		<div style="padding-left:10px; width: 100%; float: left; font-weight: bold;">17,000원 / 1인당 4,250원</div>
+		<div style="width: 100%; float: left; height: 20px;"></div>
+		<div style="overflow: auto; padding-left:10px; width: 100%; height: 300px; float: left; font-size: 17px; line-height: 1.6; letter-spacing: -0.6px;">
+			더보기 구현하기<br><br>
+			무한 스크롤 구현하기<br><br>
+			대화하기(인증회원) -> 경고 모달창 구현 -> 대화페이지<br>
+			신고하기(인증회원) -> 경고 모달창 구현 -> 신고페이지<br>
+			화면고정 모집하기(인증회원) -> 경고 모달창 구현 -> 작성페이지<br><br>
+			몇 초전, 몇 분전, 몇 시간전, 몇 일전, 몇 달전, 몇 년전 구현<br><br>
+			테스트 내 용<br>
+			 테스트 내용<br>
+			테 스트 내용<br>
+			테스 트 내용
+		</div>
+		<div style="padding-left:10px; padding-right:10px; width: 100%; text-align: right;"><button>신고하기</button> <button>대화하기</button></div>
+	</div>
 </div>

@@ -18,7 +18,6 @@ public class PartyBbsDAO {
 	private SqlSessionTemplate template;
 
 	public int insert(Map map) {
-		
 		SqlSession session = sqlMapper.openSession();
 		int affected = session.insert("partyBbsInsert", map);
 		session.commit();

@@ -65,6 +65,5 @@
          	<div class="button" style="text-align: right; padding-right: 15px;">
         		<button type="submit">완료</button>
    			</div>
-         
 	</form>
 </div>

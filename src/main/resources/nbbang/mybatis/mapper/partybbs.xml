@@ -22,6 +22,8 @@
 
 	<insert id="partyBbsInsert" parameterType="Map">
 		INSERT INTO partybbs
-		VALUES(SEQ_partybbs_partyno.NEXTVAL,#{partyTitle},#{partyContent},SYSDATE,#{partyMaxCapacity},#{partyActivation},#{partyAllotmentPrice},#{partyCategoryName},#{partyMembership},#{email})
+		VALUES(SEQ_partybbs_partyno.NEXTVAL,#{partyTitle},
+		#{partyContent},SYSDATE,#{partyMaxCapacity},#{partyActivation},
+		#{partyAllotmentPrice},#{partyCategoryName},#{partyMembership},#{email})
 	</insert>
 </mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="nbbang.mybatis.mapper.partybbs">
+
+	<resultMap type="partyBbsDTO" id="partyBbsDTOResult">
+	
+		<result column="partyNo" property="partyNo"/>
+		<result column="partyTitle" property="partyTitle"/>
+		<result column="partyContent" property="partyContent"/>
+		<result column="partyPostdate" property="partyPostdate"/>
+		<result column="partyMaxCapacity" property="partyMaxCapacity"/>
+		<result column="partyActivation" property="partyActivation"/>
+		<result column="partyAllotmentPrice" property="partyAllotmentPrice"/>
+		<result column="partyCategoryName" property="partyCategoryName"/>
+		<result column="partyMembership" property="partyMembership"/>
+		<result column="email" property="email"/>
+		 
+	</resultMap>
+
+	<insert id="partyBbsInsert" parameterType="Map">
+		INSERT INTO partybbs
+		VALUES(SEQ_partybbs_partyno.NEXTVAL,#{partyTitle},#{partyContent},SYSDATE,#{partyMaxCapacity},#{partyActivation},#{partyAllotmentPrice},#{partyCategoryName},#{partyMembership},#{email})
+	</insert>
+</mapper>

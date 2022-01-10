@@ -4,7 +4,10 @@
 </header>
 <div class="container" style="width: 750px; color: black">
 
-	<form action="">
+	<form method="post" action='<c:url value='/partyBbsWrite.do'/>'>
+
+	<input type="hidden" name="partyCategoryName" value="넷플릭스" />
+	<input type="hidden" name="partyActivation" value="true" />
 			<div style="width: 100%; text-decoration: none; padding-bottom: 23px; position: relative; float: left;">
 		   		<div>
 		   			<div style="display: inline-block; float: left; padding-left:10px;">
@@ -20,14 +23,14 @@
 			<div>
             	<label>파티 제목</label>
             	<div>
-               		<input style="width: 100%;" type="text" name="title" placeholder=" 제목을 입력하세요">
+               		<input style="width: 100%;" type="text" name="partyTitle" placeholder=" 제목을 입력하세요">
             	</div>
          	</div>
          	
          	<div>
             	<label>파티 인원</label>
             	<div>
-               		<select name="maxcapacity" style="width: 100%">
+               		<select name="partyMaxCapacity" style="width: 100%">
 	         			<option value="" disabled selected hidden> * 자신을 포함한 파티 인원을 선택하세요</option>
 		                <option value="2">2</option>
 	    	            <option value="3">3</option>
@@ -41,21 +44,21 @@
          	<div>
             	<label>결제 금액</label>
             	<div>
-               		<input style="width: 100%;" type="text" name="price" placeholder=" 결제 금액을 입력하세요">
+               		<input style="width: 100%;" type="text" name="partyAllotmentPrice" placeholder=" 결제 금액을 입력하세요">
             	</div>
          	</div>
          	
          	<div>
             	<label>멤버십 종류</label>
             	<div>
-               		<input style="width: 100%;" type="text" name="membership" placeholder=" 멤버십 종류를 입력하세요">
+               		<input style="width: 100%;" type="text" name="partyMembership" placeholder=" 멤버십 종류를 입력하세요">
             	</div>
          	</div>
          	
          	<div>
             	<label>내용</label>
             	<div>
-               		<textarea cols="50" rows="20" style="width: 100%; resize:none;" name="content" placeholder=" 내용을 입력하세요"></textarea>
+               		<textarea cols="50" rows="20" style="width: 100%; resize:none;" name="partyContent" placeholder=" 내용을 입력하세요"></textarea>
             	</div>
          	</div>
          	

@@ -42,28 +42,28 @@ public class IndexController {
 		return "party/PartyMain.tiles";
 	}
 	
-	//파티원 게시판
-	@RequestMapping("/partyBbs.do")
-	public String partyBbs() {
-		return "party/PartyBbs.tiles";
-	}
-	
-	//파티원 상세
-	@RequestMapping("/partyBbsView.do")
-	public String partyBbsView() {
-		return "party/PartyBbsView.tiles";
-	}
-	/*
-	//파티 채팅
-	@RequestMapping("/partyChat.do")
-	public String partyChat() {
-		return "party/PartyChat.tiles";
-	}*/
-	//파티원 게시판 글작성
-	@RequestMapping("/partyBbsWrite.do")
-	public String partyBbsWrite() {
-	   return "party/PartyBbsWrite.tiles";
-	}
+//	//파티원 게시판
+//	@RequestMapping("/partyBbs.do")
+//	public String partyBbs() {
+//		return "party/PartyBbs.tiles";
+//	}
+//	
+//	//파티원 상세
+//	@RequestMapping("/partyBbsView.do")
+//	public String partyBbsView() {
+//		return "party/PartyBbsView.tiles";
+//	}
+//	/*
+//	//파티 채팅
+//	@RequestMapping("/partyChat.do")
+//	public String partyChat() {
+//		return "party/PartyChat.tiles";
+//	}*/
+//	//파티원 게시판 글작성
+//	@RequestMapping("/partyBbsWrite.do")
+//	public String partyBbsWrite() {
+//	   return "party/PartyBbsWrite.tiles";
+//	}
 	
 	
 	//구독 메인

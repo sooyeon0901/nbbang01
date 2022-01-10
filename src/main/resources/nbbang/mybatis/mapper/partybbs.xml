@@ -26,4 +26,4 @@
 		#{partyContent},SYSDATE,#{partyMaxCapacity},#{partyActivation},
 		#{partyAllotmentPrice},#{partyCategoryName},#{partyMembership},#{email})
 	</insert>
-</mapper>
+</mapper> 

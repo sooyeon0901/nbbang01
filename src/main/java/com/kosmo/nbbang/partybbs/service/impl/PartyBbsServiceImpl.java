@@ -48,4 +48,4 @@ public class PartyBbsServiceImpl implements PartyBbsService {
 		return 0;
 	}
 
-} // end PartyBbsServiceImpl
+} // end PartyBbsServiceImpl 

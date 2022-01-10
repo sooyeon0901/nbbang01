@@ -34,7 +34,6 @@ public class IndexController {
 		return "auth/register/SignUp";
 	}
 	
-	
 	//파티원 메인
 	@RequestMapping("/party.do")
 	public String party() {

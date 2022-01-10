@@ -66,4 +66,4 @@
         		<button type="submit">완료</button>
    			</div>
 	</form>
-</div>
+</div> 

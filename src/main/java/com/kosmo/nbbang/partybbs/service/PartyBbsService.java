@@ -21,4 +21,4 @@ public interface PartyBbsService {
 	// 삭제
 	int delete(Map map);
 	
-} // end PartyBbsService
+} // end PartyBbsService 

@@ -25,4 +25,4 @@ public class PartyBbsDAO {
 		return affected;
 	}
 
-} // end PartyBbsDAO
+} // end PartyBbsDAO 

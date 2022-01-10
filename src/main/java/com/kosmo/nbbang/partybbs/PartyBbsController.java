@@ -60,4 +60,4 @@ public class PartyBbsController {
 		return "party/PartyBbs.tiles";
 	}
 
-} // end PartyBbsController
+} // end PartyBbsController 

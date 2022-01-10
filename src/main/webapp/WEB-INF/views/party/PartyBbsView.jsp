@@ -39,4 +39,4 @@
 		테스트 내용
 	</div>
 	<div style="padding-left:10px; padding-right:15px; width: 100%; text-align: right;"><button>신고하기</button><button>대화하기</button></div>
-</div>
+</div> 

@@ -162,4 +162,4 @@
 		</div>
 		<div style="padding-left:10px; padding-right:10px; width: 100%; text-align: right;"><button>신고하기</button> <button>대화하기</button></div>
 	</div>
-</div>
+</div> 

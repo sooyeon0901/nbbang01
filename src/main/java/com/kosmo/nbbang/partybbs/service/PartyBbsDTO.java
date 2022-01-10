@@ -97,4 +97,4 @@ public class PartyBbsDTO {
 		this.email = email;
 	}
 	
-} // end PartyBbsDTO
+} // end PartyBbsDTO 

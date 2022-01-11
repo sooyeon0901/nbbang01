@@ -109,24 +109,22 @@ public class IndexController {
 	public String recommand() {
 		return "recommand/RecommandMain.tiles";
 	}//추천 메인
-		
 	/*
 	@RequestMapping("/recommandList.do")
 	public String recommandBbs() {
 		return "recommand/RecommandList.tiles";
 	}//추천 게시판
 	*/
-	
 	@RequestMapping("/freeList.do")
 	public String freeBbs() {
 		return "recommand/FreeList.tiles";
 	}//자유 게시판
-	
+	/*
 	@RequestMapping("/recommandWrite.do")
 	public String recommandWrite() {
 		return "recommand/RecommandWrite.tiles";
 	}//추천,자유게시판 글쓰기
-	/*
+	
 	@RequestMapping("/recommandView.do")
 	public String recommandView() {
 		return "recommand/RecommandView.tiles";

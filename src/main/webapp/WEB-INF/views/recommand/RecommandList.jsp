@@ -20,18 +20,19 @@ tr {
 					<li><a href="#">구독서비스 추천</a></li>
 					<li><a href="#">컨텐츠 추천</a></li>
 					<li><a href="#">꿀팁 추천</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">정렬
-							<span class="caret"></span>
-					</a>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							정렬<span class="caret"></span>
+						</a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#">최신순</a></li>
 							<li><a href="#">추천순</a></li>
-						</ul></li>
+						</ul>
+					</li>
 				</ul>
 				<!-- 검색용 UI -->
-				<div class="row">
-					<div class="text-center">
+				<div class="row"">
+					<div class="text-right">
 						<form class="form-inline" method="post"
 							action="<c:url value='/recommand/recommandList.do'/>">
 							<div class="form-group">
@@ -67,7 +68,7 @@ tr {
 			<tbody>
 				<c:if test="${empty listPagingData.lists }" var="isEmpty">
 					<tr>
-						<td colspan="4">등록된 게시물이 없어요</td>
+						<td colspan="4" style="text-align: center;">등록된 게시물이 없어요</td>
 					</tr>
 				</c:if>
 				<c:if test="${not isEmpty }">

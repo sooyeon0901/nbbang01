@@ -22,8 +22,8 @@ public class ussrCommentController {
 	@Autowired
 	private ussrCommentServiceImpl commentService;
 	//ObjectMapper API(Jackson에 포함된 클래스) 주입:빈 설정파일에 등록 혹은 SpringBeanConfig클래스에 @Bean으로 등록
-	@Autowired
-	private ObjectMapper mapper;
+	//@Autowired
+	//private ObjectMapper mapper;
 	
 	@PostMapping(value="/recommand/commentList.do",produces = "application/json; charset=UTF-8")	
 	public List<Map> list(@ModelAttribute("email") String email, @RequestParam Map map) throws JsonProcessingException {

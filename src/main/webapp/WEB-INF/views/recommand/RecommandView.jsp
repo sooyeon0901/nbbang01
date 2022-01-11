@@ -73,8 +73,6 @@
 			<div class="text-center">
 				<h2>댓글</h2>
 				<form class="form-inline" id="frm">
-					<!-- 씨큐리티 적용:csrf취약점 방어용 -->
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 					<input type="hidden" name="ussrno"	value="${record.ussrno}" />
 					<input type="hidden" name="comno" /> 
 					<input placeholder="댓글을 입력하세요" id="title" class="form-control" type="text" size="50" name="comcontent" /> 
@@ -97,7 +95,7 @@
 	function showComments(){
 		$.ajax({
 			url:'<c:url value="/recommand/commentList.do"/>',
-			data:{"ussrno":"${record.ussrno}","${_csrf.parameterName}":"${_csrf.token}"},
+			data:{"ussrno":"${record.ussrno}"},
 			dataType:"json",
 			type:"post",
 			success:showComments_,

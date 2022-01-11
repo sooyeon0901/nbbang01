@@ -26,7 +26,7 @@
 	</beans:bean>
 	
 	<context:property-placeholder
-		location="classpath:nbbang/resources/adminpaging.properties" />
+		location="classpath:nbbang/resources/adminpaging.properties, classpath:nbbang/resources/ussr.properties" />
 
 	<context:component-scan
 		base-package="com.kosmo.nbbang" />

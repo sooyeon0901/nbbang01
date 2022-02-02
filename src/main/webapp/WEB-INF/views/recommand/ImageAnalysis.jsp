@@ -31,7 +31,7 @@
 	
 	
 	.containerAnalysis{
-		margin-left:60px;
+		margin:auto;
 		width:80%;
 		height:1000px;
 		margin-bottom:60px;
@@ -58,6 +58,9 @@
 	#preview_image{
 		display:block;
 		margin:auto;
+		width:300px;
+		height:300px;
+		border: 1px solid grey;
 	}
 	#test_image{
 		margin:auto;
@@ -108,13 +111,20 @@
 </div>
 
 <div class="container" >
-	<h1 style="margin:10px;font-family: 'Jua', sans-serif;margin-left:50px;color:#BEBEBE;">이미지 분석 test 페이지</h1>
+	<h1 style="margin:10px;font-family: 'Jua', sans-serif;margin-left:50px;color:#BEBEBE;">당신의 취향을 추천해 드립니다.</h1>
+	<h2 style="margin:10px;font-family: 'Jua', sans-serif;margin-left:50px;color:#BEBEBE;">챗봇 엔빵이에게 오늘의 취향을 말해 보세요. 엔빵이를 클릭하시면 챗봇이 시작됩니다.</h2>
+	<!-- 챗봇 적용 -->
+	<div style="text-align:center;">
+		<img id="nbbang_chatbot" src="<%=request.getContextPath()%>/resources/logo/Nbread_02_2_cut.png" style="width:80px;height:100px;cursor:pointer;"/>
+	</div>
 	<hr class="col-md-12" style="width:900px;margin-left:50px;"/>
+	
+	
 	
    <div class="containerAnalysis">
 	    <h1 id="todo">필모그라피가 궁금한 배우의 사진을 넣어주세요.</h1>
 	    
-		<img id="preview_image" src=""/>
+		<img id="preview_image" src="<%=request.getContextPath()%>/resources/account/image_basic.png"/>
 		<input type="file" id="test_image" accept=".png,.jpg,.jpeg" multiple/>
 		<div class="btnWrap">
 			<button class="btn btn-warning" id="btnCheck" type="button" onclick="predict()">확인하기</button>
@@ -150,6 +160,13 @@
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 	<script type="text/javascript">
+	
+		//챗봇 창 띄우기
+		$('#nbbang_chatbot').on('click',function(){
+			window.open("chatbot.do",'_blank','width=600,height=800,menubar=false');
+	    })
+    
+	
 	    const URL = "./my_model/";
 
 	    let model, webcam, labelContainer, maxPredictions;
@@ -191,6 +208,11 @@
 		
 	    // run the webcam image through the image model
 	    async function predict() {
+			//빈값일 때 유효성 검증
+	        if($('#test_image').val() == ""){
+				alert('이미지 파일을 선택하세요.');
+				return false;
+			}
 	        // predict can take in an image, video or canvas html element
 	        //const prediction = await model.predict(webcam.canvas);
 	        var image = document.getElementById('preview_image');
@@ -228,6 +250,10 @@
 	        filmography_netflix_img = document.getElementById("filmography_netflix_img");
 	        filmography_netflix_title = document.getElementById("filmography_netflix_title");
 	        filmography_watcha_img = document.getElementById("filmography_watcha_img");
+	        
+	        
+	        
+	        
 	        
 	        if(actorName == '김고은'){
 	        	for(var i=1; i<=9; i++) {

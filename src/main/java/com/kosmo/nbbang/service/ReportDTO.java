@@ -21,6 +21,7 @@ public class ReportDTO {
 	private java.sql.Date reportregistdate;
 	private String inqno;
 	private String partyNo;
+	private String ussrno;
 	private String email;
 	
 	public ReportDTO() {
@@ -29,7 +30,7 @@ public class ReportDTO {
 	}
 	
 	public ReportDTO(String reportno, String reportbbs, String reportcontent, String reporttype, Date reportregistdate, String inqno,
-			String partyNo,
+			String partyNo,String ussrno,
 			String email) {
 		super();
 		this.reportno = reportno;
@@ -39,6 +40,7 @@ public class ReportDTO {
 		this.reportregistdate = reportregistdate;
 		this.inqno = inqno;
 		this.partyNo = partyNo;
+		this.ussrno = ussrno;
 		this.email = email;
 	}
 	public String getReportno() {
@@ -78,6 +80,13 @@ public class ReportDTO {
 	}
 	public void setPartyNo(String partyNo) {
 		this.partyNo = partyNo;
+	}
+	
+	public String getUssrno() {
+		return ussrno;
+	}
+	public void setUssrno(String ussrno) {
+		this.ussrno = ussrno;
 	}
 	
 	public java.sql.Date getReportregistdate() {

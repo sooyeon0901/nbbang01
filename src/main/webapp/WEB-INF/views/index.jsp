@@ -81,7 +81,7 @@
 				<div class="row nino-hoverEffect">
 					<div class="col-md-4 col-sm-4">
 						<div class="item">
-							<a class="overlay" href="#">
+							<a class="overlay">
 								<span class="content">
 									<i class="mdi mdi-account-multiple nino-icon"></i>
 									Lecture

@@ -137,8 +137,8 @@
 				<h3>세상의 수많은 구독 서비스들을 손쉽게 관리하세요.</h3>
 				<h4>이체 일정 및 알림 설정으로 잊지말고 챙기세요.</h4>
 			</div>
-			<div id="first-navbar-logo">
-				<a href="<c:url value="/index.do"/>">Nbbang</a>
+			<div id="first-navbar-logo" style="color:black;">
+				Nbbang
 			</div>
 			<div id="first-navbar-login">
 				<a href="<c:url value='/login.do'/>">로그인</a>

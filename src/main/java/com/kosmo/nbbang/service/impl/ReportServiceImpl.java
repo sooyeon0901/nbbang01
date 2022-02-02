@@ -39,6 +39,10 @@ public class ReportServiceImpl implements ReportService {
 	public int insert404(Map map) {
 		return dao.insert404(map);
 	}
+	@Override
+	public int insertUssr(Map map) {
+		return dao.insertUssr(map);
+	}
 
 	@Override
 	public ListPagingData<ReportDTO> selectList(Map map, HttpServletRequest req, int nowPage) {

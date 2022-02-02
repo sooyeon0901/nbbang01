@@ -58,5 +58,7 @@ public interface PartyBbsService {
 	
 	// 채팅 유무 확인
 	public String chatCheck(Map map);
+	
+	public int categoryCheck(Map map);
 
 } // end PartyBbsService 

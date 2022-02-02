@@ -1,10 +1,12 @@
 package com.kosmo.nbbang.partybbs;
 
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kosmo.nbbang.partybbs.service.PartyBbsDTO;
@@ -62,7 +65,6 @@ public class PartyBbsController {
 		return "party/PartyBbs.tiles";
 	}
 	
-
 	// 파티원 게시판-넷플릭스
 	@RequestMapping("/netflixList.do")
 	public String partyBbsNetflix(@ModelAttribute("email") String email, @RequestParam Map map,
@@ -231,12 +233,29 @@ public class PartyBbsController {
 		return "party/PartyBbsWrite.tiles";
 	}
 
+	// 아이디 중복 체크
+	@ResponseBody
+	@RequestMapping(value="/categoryCheck.do", method = RequestMethod.POST)
+	public int categoryCheck(@ModelAttribute("email") String email, @RequestParam Map map) throws Exception {
+		int result = partyBbsService.categoryCheck(map);
+		return result;
+	}
+	
 	// 파티원 게시판 글 작성, 파티멤버 등록
 	@RequestMapping(value = "/partyBbsWrite.do", method = RequestMethod.POST)
-	public String partyBbsWriteOk(@ModelAttribute("email") String email, @RequestParam Map map) throws Exception {
+	public String partyBbsWriteOk(@ModelAttribute("email") String email, @RequestParam Map map, Model model, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		map.put("email", email);
-		partyBbsService.insert(map);
-		partyMemberService.insert(map);
+		int result = partyBbsService.categoryCheck(map);
+		System.out.println("affected 0이면 중복X 1이상이면 중복O : " + result);
+		if (result >= 1) {
+			out.println("<script>alert('이미 해당 카테고리에 파티 모집이 있습니다.');location.href='/nbbang/partyBbsWrite.do';</script>");
+			out.flush();
+		} else if (result == 0) {
+			partyBbsService.insert(map);
+			partyMemberService.insert(map);
+		}
 		return "forward:/partyBbs.do";
 	}
 

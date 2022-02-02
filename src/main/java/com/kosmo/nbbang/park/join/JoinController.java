@@ -84,15 +84,19 @@ public class JoinController {
 			model.addAttribute("passwordError","비밀번호를 입력하세요");
 			return false;
 		}
-		else if(cmd.getPassword().trim().equals("") && map.get("loginType")!=null) {
+		else if(cmd.getPassword().trim().equals("") && (map.get("loginType")=="kakao" || map.get("loginType")=="google")) {
 			return true;
 		}
 		
 		String patternPassword = "^[a-z0-9A-Z]{4,20}$";
-		if(!(Pattern.matches(patternPassword, cmd.getPassword()))) {
+		if(!(Pattern.matches(patternPassword, cmd.getPassword())) && map.get("loginType")==null) {
 			model.addAttribute("passwordError","4자 이상 입력해주세요");
 			return false;
 		}
+		else if(!(Pattern.matches(patternPassword, cmd.getPassword())) && (map.get("loginType")=="kakao" || map.get("loginType")=="google")) {
+			return true;
+		}
+		
 		if(cmd.getName().trim().equals("")) {
 			model.addAttribute("nameError","이름을 입력하세요");
 			return false;

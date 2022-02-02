@@ -18,9 +18,50 @@ public class MyReportDTO {
 	private int sfno;
 	private String paymentmon;
 	private int mondata;
+	//매개변수
+	private String email;
+	private String nickname;
+	//저장하는 데이터
+	private int yearsum;
+	private int monthsum;
+	private int weeksum;
 	
-	
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getYearSum() {
+		return yearsum;
+	}
+
+	public void setYearSum(int yearsum) {
+		this.yearsum = yearsum;
+	}
+
+	public int getMonthSum() {
+		return monthsum;
+	}
+
+	public void setMonthSum(int monthsum) {
+		this.monthsum = monthsum;
+	}
+
+	public int getWeekSum() {
+		return weeksum;
+	}
+
+	public void setWeekSum(int weeksum) {
+		this.weeksum = weeksum;
+	}
+
+	public void setSubno(int subno) {
+		this.subno = subno;
+	}
+
 	public int getSubno() {
 		return subno;
 	}
@@ -73,5 +114,13 @@ public class MyReportDTO {
 	
 	public void setMondata(int mondata) {
 		this.mondata = mondata;
-	}		
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 }

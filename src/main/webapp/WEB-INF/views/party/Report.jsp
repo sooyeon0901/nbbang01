@@ -129,14 +129,14 @@
             <div class="col-sm-10">
                <div class="row">
                   <div class="col-sm-12">
-                     <textarea class="summernote" name="reportcontent"></textarea>  
+                     <textarea class="summernote" id="summernote" name="reportcontent"></textarea>  
                   </div>
                </div>
             </div>
          </div>
          
          <div class="btns1">
-               <button class="btn btn-warning" onclick="submit()">신고하기</button>
+               <button class="btn btn-warning" id="submit" onclick="submit()">신고하기</button>
                <button class="btn btn-secondary" onclick="location.href='partyBbs.do'">취소</button>
          </div>
       </form>
@@ -171,4 +171,21 @@
         
         
    });
+   
+ //유효성 체크
+   $('#submit').on('click',function(){
+	   var radioCheck = $('.custom-radio');
+	   if($(':radio[name="reporttype"]:checked').length < 1){
+		   alert('신고사유를 체크해 주세요.');
+		   radioCheck.focus();
+		   event.preventDefault();
+	   }
+	   
+	   var textCheck = $('#summernote').val();
+	   if( textCheck == ""  || textCheck == null || textCheck == '&nbsp;' || textCheck == '<p>&nbsp;</p>')  {
+           alert("신고 내용을 입력하세요.");
+           event.preventDefault();
+       }
+	   
+   })
 </script>

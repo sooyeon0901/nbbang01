@@ -128,7 +128,7 @@
 									</label>
 								</div>
 								<div class="w-50 text-md-right">
-									<a href="<c:url value='/findmember.do'/>" style="color: #fff">비밀번호를 잊으셨나요?</a>
+									<a href="<c:url value='/findmember.do'/>" style="color: #fff">이메일을 잊으셨나요?</a>
 								</div>
 							</div>
 						</form>
@@ -149,23 +149,6 @@
 		</div>
 	</section>
 	<script>
-	/*
-	function onSignIn(googleUser) {
-		  var profile = googleUser.getBasicProfile();
-		  var id_token = googleUser.getAuthResponse().id_token;
-		  var xhr = new XMLHttpRequest();
-		  console.log('ID: ' + profile.getId());
-		  console.log('Full Name: ' + profile.getName());
-		  console.log('Email: ' + profile.getEmail());		  
-		  xhr.open('POST', 'http://localhost:9575/nbbang/login/oauth2/code/google/tokensignin');
-		  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		  xhr.onload = function() {
-		    console.log('Signed in as: ' + xhr.responseText);
-		  };
-		  console.log('idtoken=' + id_token);
-		  xhr.send('idtoken=' + id_token);
-	}
-	*/
 	$(function () {
 		social.kakao.init();
 		social.google.init("googleBtn");

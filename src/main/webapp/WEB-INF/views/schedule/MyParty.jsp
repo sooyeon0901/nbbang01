@@ -73,7 +73,7 @@
 			<div>
 				<div style="display: inline-block; width: 270px; height: 55px; padding-left: 20px;">
 					<label style="color: gray;">모집인원</label><br>
-					<label>{현재인원}/${item.partyMaxCapacity }</label>
+					<label>${item.count }/${item.partyMaxCapacity }</label>
 				</div>
 				
 				<div style="display: inline-block; padding-left: 60px;">
@@ -91,12 +91,23 @@
 				
 				<div style="display: inline-block; width: 270px; height: 55px; padding-left: 20px;">
 					<label style="color: gray;">파티 시작</label><br>
-					<label>${partyMatchDate} null 상태</label>
+					<c:if test="${empty item.partyMatchdate }">
+						<label>아직 파티 모집이 완료되지 않았습니다.</label>
+					</c:if>
+					<c:if test="${not empty item.partyMatchdate }">
+						<label>${item.partyMatchdate}</label>
+					</c:if>
 				</div>
-				
 				<div style="display: inline-block; padding-left: 60px;">
 					<label style="color: gray;">파티 종료</label><br>
-					<label>${partyMatchDate} null 상태 + 6개월</label>
+					<c:if test="${empty item.partyMatchdate }">
+						<label>아직 파티 모집이 완료되지 않았습니다.</label>
+					</c:if>
+					<c:if test="${not empty item.partyMatchdate }">
+						<label>
+							${item.endDate }
+						</label>
+					</c:if>
 				</div>
 				<br>
 			</div>
@@ -108,7 +119,6 @@
 	<c:if test="${empty partyBbsList}">
 	<div style="text-align: center;">
 		<br>
-		파티가 없을때 나오는 이미지<br>
 		<img src="<%=request.getContextPath()%>/resources/party/no_party.png" alt=""><br>
 		<h4 style="color: gray; font-weight: bold;">파티에 참여해보세요!</h4>
 		<br>

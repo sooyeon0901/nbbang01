@@ -16,6 +16,7 @@
 		
 		<result column="inqno" property="inqno"/>
 		<result column="partyNo" property="partyNo"/>
+		<result column="ussrno" property="ussrno"/>
 		<result column="reportregistdate" property="reportregistdate"/>
 		<result column="email" property="email"/>
 		 
@@ -23,15 +24,19 @@
 
 	<insert id="reportInsert" parameterType="Map" >
 		INSERT INTO report VALUES(SEQ_report_reportno.NEXTVAL,#{reportbbs},#{reportcontent},#{reporttype},SYSDATE,#{email},
-		#{inqno},null)
+		#{inqno},null,null)
 	</insert>
 	<insert id="reportInsertParty" parameterType="Map" >
 		INSERT INTO report VALUES(SEQ_report_reportno.NEXTVAL,#{reportbbs},#{reportcontent},#{reporttype},SYSDATE,#{email},
-		null,#{partyNo})
+		null,#{partyNo},null)
 	</insert>
 	<insert id="reportInsert404" parameterType="Map" >
 		INSERT INTO report VALUES(SEQ_report_reportno.NEXTVAL,#{reportbbs},#{reportcontent},#{reporttype},SYSDATE,#{email},
-		null,null)
+		null,null,null)
+	</insert>
+	<insert id="reportInsertUssr" parameterType="Map" >
+		INSERT INTO report VALUES(SEQ_report_reportno.NEXTVAL,#{reportbbs},#{reportcontent},#{reporttype},SYSDATE,#{email},
+		null,null,#{ussrno})
 	</insert>
 	
 	<select id="reportSelectList" parameterType="Map" resultType="reportDTO">

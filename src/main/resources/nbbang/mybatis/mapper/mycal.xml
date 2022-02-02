@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nbbang.mybatis.mapper.mycal">
+   <!-- 
+   <resultMap type="mycalDTO" id="mycalDTOResult">
+      <result column="calno" property="calno"/>
+      <result column="calsubtitle" property="calsubtitle"/>
+      <result column="email" property="email"/>
+      <result column="startdate" property="startdate"/>
+      <result column="enddate" property="enddate"/>
+      <result column="allday" property="allday"/>
+   </resultMap>
+    -->
+    
+   <insert id="mycalInsert" parameterType="Map">
+      INSERT INTO calendarinfo VALUES(SEQ_calendarinfo_calno.NEXTVAL,#{title},#{email},NULL,#{start},#{end},#{allday})
+   </insert>
+   <select id="checkDouble" parameterType="Map" resultType="int">
+      SELECT count(*) FROM calendarinfo
+      WHERE CALSUBTITLE = #{title} AND
+      EMAIL = #{email}
+   </select>
+   
+   <select id="selectDate" parameterType="Map" resultType="int">
+      SELECT calno FROM calendarinfo
+      WHERE CALSUBTITLE = #{title} AND
+      EMAIL = #{email}
+   </select>
+   
+   <update id="saveUpdate" parameterType="Map">
+      UPDATE calendarinfo 
+      SET STARTDATE = #{start}, ENDDATE = #{end} 
+      WHERE CALNO = #{no}
+   </update>
+   
+   <select id="getCals" parameterType="String" resultType="calDTO">
+      SELECT * FROM calendarinfo WHERE email = #{email}
+   </select>
+   
+</mapper> 

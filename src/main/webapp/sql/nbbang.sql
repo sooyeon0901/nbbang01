@@ -1,6 +1,6 @@
 
 /* 0101 데이터 추가_로그인 테스트용_김수연 */
-INSERT INTO member VALUES('kim@naver.com', '1234', '김길동', '길동짱', '19930901', '남', '010-1234-1234', 'home', null, 'admin', DEFAULT, null, null);
+INSERT INTO member VALUES('kim@naver.com', '1234', '김길동', '길동짱', '19930901', '남', '010-1234-1234', 'home', null, 'normal', DEFAULT, profile_image.png, gildong.jpg);
 /* member테이블의 USERTYPE, authority을 null허용 가능으로 수정하기_박재현 */
 ALTER TABLE member MODIFY USERTYPE NULL;
 ALTER TABLE member MODIFY authority NULL;
@@ -13,9 +13,10 @@ ALTER TABLE partymember add FOREIGN KEY(partyno) REFERENCES partybbs(partyno) ON
 /* ussrbbs 칼럼추가_황태환 */
 ALTER TABLE ussrbbs ADD NAVCATEGORY nvarchar2(30) NOT NULL;
 /* report 테이블에 컬럼추가_김수연 */
-ALTER TABLE report ADD inqno number
-ALTER TABLE report ADD partyno number
+ALTER TABLE report ADD inqno number;
+ALTER TABLE report ADD partyno number;
 ALTER TABLE report RENAME COLUMN reportbbsno TO reportbbs;
+ALTER TABLE report ADD ussrno number;
 
 /* Drop Tables */
 
@@ -450,7 +451,7 @@ ALTER TABLE ussrlike
 	REFERENCES ussrbbs (ussrno)
 ;
 
-INSERT INTO member VALUES('nbbang@nbbang.com', 'nbbang', '����', '������', '20211108', 'admin', '010-1234-5678', 'home', null, 'admin', DEFAULT, null, null);
+INSERT INTO member VALUES('nbbang@nbbang.com', 'nbbang', '관리자', '관리자', '20211108', 'admin', '010-1234-5678', 'home', null, 'admin', DEFAULT, profile_image.png, admin_profile.png);
 
 
 

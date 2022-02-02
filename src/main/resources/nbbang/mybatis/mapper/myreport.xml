@@ -3,16 +3,71 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="nbbang.mybatis.mapper.myreport">
-
-	<select id="selectMyReport" parameterType="String" resultType="myreport">
+	<resultMap type="MyReportDTO" id="myReportDTO">
+		<result column="subno" property="subno"/>
+		<result column="subservice" property="subservice"/>
+		<result column="paymentday" property="paymentday"/>
+		<result column="money" property="money"/>
+		<result column="sfno" property="sfno"/>
+		<result column="paymentmon" property="paymentmon"/>
+		<result column="mondata" property="mondata"/>
+		<result column="email" property="email"/>	
+	</resultMap>
+	<!-- 원그래프 -->
+	<select id="selectMyReport" parameterType="Map" resultType="myReportDTO">
 		select to_char(paymentday, 'yyyy-mm') as paymentmon 
-		     , sum(money) as money
-		     , nvl(count(*), 0) as mondata
-		     , subservice as subservice
-		from subscription
-		where to_char(paymentday, 'YYYY') = '2022'
-		group by to_char(paymentday, 'yyyy-mm'), subservice
-		order by to_char(paymentday, 'yyyy-mm')
+           , sum(money) as money
+           , nvl(count(*), 0) as mondata
+           , subservice
+      from subscription s JOIN subfolder f ON f.sfno = s.sfno
+      where to_char(paymentday, 'YYYY') = to_char(SYSDATE,'YYYY') AND email=#{email}
+      group by to_char(paymentday, 'yyyy-mm'),to_char(paymentday,'yyyy-mm'),subservice
+      order by to_char(paymentday, 'yyyy-mm')
+	</select>
+	<!-- 막대선그래프 -->
+	<select id="selectMyReport2" parameterType="Map" resultType="myReportDTO">
+		SELECT TO_CHAR(b.dt, 'YYYY-MM') AS paymentmon     
+		     , (select NVL(sum(money), 0) from subscription s JOIN subfolder f ON f.sfno = s.sfno where TO_CHAR(s.paymentday, 'YYYY-MM') = TO_CHAR(b.dt, 'YYYY-MM')) as money
+		     , NVL(SUM(a.cnt), 0) mondata     
+		  FROM ( SELECT TO_CHAR(paymentday, 'YYYY-MM-DD') AS paymentday              
+		              , COUNT(*) cnt
+		          from subscription s JOIN subfolder f ON f.sfno = s.sfno
+		          WHERE paymentday BETWEEN TO_DATE('2022-01-01', 'YYYY-MM-DD')
+		                             AND TO_DATE('2022-12-31', 'YYYY-MM-DD') 
+		          GROUP BY paymentday
+		        ) a
+		      , ( SELECT TO_DATE('2022-01-01','YYYY-MM-DD') + LEVEL - 1 AS dt
+		            FROM dual 
+		         CONNECT BY LEVEL &lt;= (TO_DATE('2022-12-31','YYYY-MM-DD') 
+		                            - TO_DATE('2022-01-01','YYYY-MM-DD') + 1)
+		        ) b
+		  WHERE b.dt = a.paymentday(+)
+		  GROUP BY TO_CHAR(b.dt, 'YYYY-MM')
+		  ORDER BY TO_CHAR(b.dt, 'YYYY-MM')
 	</select>
 	
+	<select id="selectYearSum" parameterType="Map" resultType="myReportDTO">
+		select sum(money) as yearsum from 
+    		(select money from subscription s join subfolder f on s.sfno = f.sfno 
+        		where to_char(paymentday,'YYYY') = to_char(SYSDATE,'YYYY') AND f.email = #{email})
+	</select>
+	
+	<select id="selectMonthSum" parameterType="Map" resultType="myReportDTO">
+		select sum(money) as monthsum from 
+    		(select money from subscription s join subfolder f on s.sfno = f.sfno 
+        		where to_char(paymentday,'YYYYMM') = to_char(SYSDATE,'YYYYMM') AND f.email = #{email})
+	</select>
+	
+	<select id="selectWeekSum" parameterType="Map" resultType="myReportDTO">
+		SELECT sum(money) as weeksum FROM 
+    		(select money from subscription s join subfolder f on s.sfno = f.sfno 
+        		WHERE(to_char(paymentday,'YYYYMMDD') = TO_CHAR(SYSDATE-7,'YYYYMMDD')OR 
+            	to_char(paymentday,'YYYYMMDD') = TO_CHAR(SYSDATE-6,'YYYYMMDD') OR 
+            	to_char(paymentday,'YYYYMMDD') = TO_CHAR(SYSDATE-5,'YYYYMMDD') OR
+            	to_char(paymentday,'YYYYMMDD') = TO_CHAR(SYSDATE-4,'YYYYMMDD') OR
+            	to_char(paymentday,'YYYYMMDD') = TO_CHAR(SYSDATE-3,'YYYYMMDD') OR
+            	to_char(paymentday,'YYYYMMDD') = TO_CHAR(SYSDATE-2,'YYYYMMDD') OR
+            	to_char(paymentday,'YYYYMMDD') = TO_CHAR(SYSDATE-1,'YYYYMMDD') OR
+            	to_char(paymentday,'YYYYMMDD') = TO_CHAR(SYSDATE,'YYYYMMDD'))AND f.email = #{email})
+	</select>
 </mapper>

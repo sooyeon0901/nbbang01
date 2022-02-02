@@ -21,6 +21,7 @@ public class PartyBbsDTO {
 	private String partyLeader;
 	private String count;
 	private String chatExists;
+	private Date endDate;
 	
 	// 생성자
 	public PartyBbsDTO() {
@@ -28,7 +29,8 @@ public class PartyBbsDTO {
 	
 	public PartyBbsDTO(String partyNo, String partyTitle, String partyContent, Date partyPostdate,
 			String partyMaxCapacity, String partyActivation, String partyAllotmentPrice, String partyCategoryName,
-			String partyMembership, String email, Date partyMatchdate, String nickname, String profile, String oringinProfile, String partyLeader, String count, String chatExists) {
+			String partyMembership, String email, Date partyMatchdate, String nickname, String profile, 
+			String oringinProfile, String partyLeader, String count, String chatExists, Date endDate) {
 		super();
 		this.partyNo = partyNo;
 		this.partyTitle = partyTitle;
@@ -47,6 +49,7 @@ public class PartyBbsDTO {
 		this.partyLeader = partyLeader;
 		this.count = count;
 		this.chatExists = chatExists;
+		this.endDate = endDate;
 	}
 
 	// Getter, Setter
@@ -158,6 +161,14 @@ public class PartyBbsDTO {
 
 	public void setChatExists(String chatExists) {
 		this.chatExists = chatExists;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 	
 } // end PartyBbsDTO 

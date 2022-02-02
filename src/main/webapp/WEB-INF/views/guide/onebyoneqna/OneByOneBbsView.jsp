@@ -203,7 +203,7 @@ td{
 	
 	function setBlackMember(){
 		if(confirm("정말로 회원 정지를 하시겠습니까?")){
-			
+			location.replace("<c:url value='/partyBlackMember.do?email=${record.email}'/>");
 		}
 	}
 	

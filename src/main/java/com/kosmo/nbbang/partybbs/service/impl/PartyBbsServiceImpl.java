@@ -248,4 +248,8 @@ public class PartyBbsServiceImpl implements PartyBbsService {
 		return dao.nowPartyMemberReport(map);
 	}
 
+	public int categoryCheck(Map map) {
+		return dao.categoryCheck(map);
+	}
+
 } // end PartyBbsServiceImpl

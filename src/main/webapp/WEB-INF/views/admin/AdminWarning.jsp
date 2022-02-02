@@ -61,11 +61,11 @@
 	                                            <td>${listPagingData.totalRecordCount - (((listPagingData.nowPage - 1) * listPagingData.pageSize) + loop.index)}</td>
 	                                            <td>${item.email }</td>
 	                                            <td>${item.reportbbs }</td>
-	                                            <td>${item.inqno }${item.partyNo }</td>
+	                                            <td>${item.inqno }${item.partyNo }${item.ussrno}</td>
 	                                            <td>${item.reporttype }</td>
 	                                            <td>${item.reportcontent}</td>
 	                                            <td>${item.reportregistdate}</td>
-	                                            <td><a href="<c:url value='/findReport.do?reportbbs=${item.reportbbs }&inqno=${item.inqno }&partyNo=${item.partyNo }'/>" class="btn btn-info btn-circle btn-sm">
+	                                            <td><a href="<c:url value='/findReport.do?reportbbs=${item.reportbbs }&inqno=${item.inqno }&partyNo=${item.partyNo }&ussrno=${item.ussrno }'/>" class="btn btn-info btn-circle btn-sm">
 	                                            	<i class="fas fa-info-circle"></i> 
 	                                            	</a>
 	                                            </td>

@@ -61,7 +61,7 @@
 											<div class="col-md-10">
 												<div class="input-group mb-3">
 													<input type="text" id="id_email" class="form-control"
-														name="email" placeholder="email@nbbang.com" value="${param.email}" <c:if test="${param.loginType != null}">readonly="readonly"</c:if>/>
+														name="email" placeholder="email@nbbang.com" value="${param.email}" <c:if test="${param.loginType == 'kakao' || param.loginType == 'google'}">readonly="readonly"</c:if>/>
 														<span style="color: red; font-size: .8em">${emailError}
 															<form:errors path="formCommand.email" />
 														</span>
@@ -75,7 +75,7 @@
 											<div class="col-md-10">
 												<div class="input-group mb-3">
 													<input type="password" id="id_password" class="form-control"
-														name="password" value="${param.password}" <c:if test="${param.loginType != null}">readonly="readonly" placeholder="소셜로그인 시 비밀번호 미입력"</c:if><c:if test="${param.loginType==null}">placeholder="비밀번호"</c:if>/>
+														name="password" value="${param.password}" <c:if test="${param.loginType == 'kakao' || param.loginType == 'google'}">readonly="readonly" placeholder="소셜로그인 시 비밀번호 미입력"</c:if><c:if test="${param.loginType != 'kakao' && param.loginType != 'google'}">placeholder="비밀번호"</c:if>/>
 													<span style="color: red; font-size: .8em">${passwordError}
 														<form:errors path="formCommand.password" />
 													</span>
@@ -84,7 +84,7 @@
 											<!-- name -->
 											<div class="col-md-10">
 												<div class="form-group">
-													<input type="text" id="id_name" class="form-control" placeholder=이름 name="name" value="${param.nickname}" />
+													<input type="text" id="id_name" class="form-control" placeholder=이름 name="name" value="${param.name}" />
 													<span style="color: red; font-size: .8em">${nameError}
 															<form:errors path="formCommand.name" />
 													</span>

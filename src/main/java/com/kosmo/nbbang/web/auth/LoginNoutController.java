@@ -115,12 +115,12 @@ public class LoginNoutController {
 		int affected = memberService.setBlackMember(map);
 		
 		if(affected == 1) {
-			return "admin/AdminMain";
+			return "forward:/adminmember.do";
 		}
 		
 		return "first";
 	}
-	
+	/*
 	//관리자페이지 - 회원관리에서 회원정지시 : 해결중
 	@RequestMapping("/blackMember.do")
 	public @ResponseBody String blackMember(@ModelAttribute("emailAdmin") String emailAdmin,@RequestParam Map map,Model model,SessionStatus status) {
@@ -141,7 +141,7 @@ public class LoginNoutController {
 		
 		return "auth/404";
 	}
-	
+	*/
 	//회원탈퇴 페이지
 	@RequestMapping("/resignPage.do")
 	public String resignPage(@RequestParam Map map,Model model,SessionStatus status) {

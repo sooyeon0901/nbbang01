@@ -19,6 +19,11 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gugi&family=Jua&family=Montserrat:ital,wght@0,100;1,500&family=Nanum+Gothic&family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+	<!-- SocialLogin -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="84685836012-liev1gs62jmnf58m5k4iq7bd04usemdd.apps.googleusercontent.com">
+	<script src="<c:url value="/resources/js/socialLogin.js"/>"></script>
 </head>
 <style>
 	body{
@@ -57,7 +62,9 @@
 	 .contents{
 	 	position: relative;
 	 }
-	 
+	 .abcRioButton.abcRioButtonLightBlue {
+	 	margin: 0 auto;
+	 }
 </style>
 
 <!-- modal 시작 -->
@@ -82,7 +89,7 @@
 <body class="img js-fullheight" style="background-image: url(resources/login/images/bg.jpg);">
 	<div class="contents">
 		<div id="first-navbar-logo">
-			<a href="<c:url value="/index.do"/>" style="color:white; ">Nbbang</a>
+			<a href="<c:url value="/login.do"/>" style="color:white; ">로그인</a>
 		</div>
 		<div id="first-navbar-login">
 			<a href="<c:url value='/signup.do'/>" style="color:white;">회원가입</a>
@@ -122,14 +129,17 @@
 						
 						
 						<!-- 소셜 로그인 영역 -->
-						<p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
-						<div class="social d-flex text-center">
-							<a href="#" class="px-2 py-2 mr-md-1 rounded"><span
-								class="ion-logo-facebook mr-2"></span> Kakao</a> 
-								<a href="#" class="px-2 py-2 ml-md-1 rounded"><span
-								class="ion-logo-twitter mr-2"></span> Goolge</a>
-						</div>
-						
+						<form action="<c:url value='/sociallogin.do'/>" class="signin-form" method="post" id="form">
+							<div style="text-align: center;">
+								<!-- 소셜 로그인 영역 -->
+								<p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+								<a href="#" onclick="social.kakao.login()"><img src="<%=request.getContextPath()%>/resources/images/social_login_logo/kakao_login_btn.png" alt="카카오로그인"></a>
+								<div class="g-signin2" data-onsuccess="onSignIn" id="googleBtn" data-width="300px" data-height="45px;" data-longtitle="true"></div>
+								<input type="hidden" name="loginType" id="loginType">
+								<input type="hidden" name="nickname" id="nickname">
+								<input type="hidden" name="email" id="email">
+							</div>
+						</form>						
 					</div>
 				</div>
 			</div>
@@ -176,7 +186,23 @@
 			
 		});
 		
-	
+		$(function () {
+			social.kakao.init();
+			social.google.init("googleBtn");
+		});
+		
+		function socialGetInfo(info) {
+			console.log("info.type:",info.type);
+			console.log("info.nm:",info.nm);
+			console.log("info.email:",info.email);
+			var loginType = info.type;
+			var nickname = info.nm;
+			var email = info.email;
+			$('#loginType').val(loginType);
+			$('#nickname').val(nickname);
+			$('#email').val(email);
+			setTimeout($('#form').submit(), 2000);
+		}
 	</script>
 </body>
 </html>

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.nbbang.hwang.service.ListPagingData;
+import com.kosmo.nbbang.hwang.service.UssrDTO;
+import com.kosmo.nbbang.hwang.service.impl.UssrServiceImpl;
 import com.kosmo.nbbang.partybbs.service.PartyBbsDTO;
 import com.kosmo.nbbang.partybbs.service.impl.PartyBbsServiceImpl;
 import com.kosmo.nbbang.service.InquiryBbsDTO;
@@ -28,6 +30,8 @@ public class ReportController {
 	private InquiryBbsService inquiryBbsService;
 	@Autowired
 	private PartyBbsServiceImpl partyBbsService;
+	@Autowired
+	private UssrServiceImpl ussrService;
 	
 	
 	@RequestMapping("/reportInsert.do")
@@ -62,6 +66,26 @@ public class ReportController {
 		return "report/ReportOk.tiles";
 	}
 	
+	//추천/자유 게시판 신고받아오기(카테고리 나눠야함..)
+	@RequestMapping("/ussrReport.do")
+	public String ussrReport(@RequestParam Map map, Model model) {
+
+		UssrDTO record = ussrService.selectOne(map);
+		model.addAttribute("record", record);
+
+		return "recommand/Report.tiles";
+	}
+	//추천/자유 게시판 신고처리 (카테고리 나눠야함..)
+	@RequestMapping("/ussrReportOk.do")
+	public String ussrReportOk(@ModelAttribute("ussrno") String ussrno, @RequestParam Map map, Model model) {
+
+		System.out.println("ussrReportOk의 이메일" + map.get("email"));
+
+		int affected = reportService.insertUssr(map);
+		model.addAttribute("ussrno:" + ussrno);
+
+		return "report/ReportOk.tiles";
+	}
 	
 	//문의 게시판 신고받아오기
 	@RequestMapping("/oboReport.do")
@@ -111,13 +135,14 @@ public class ReportController {
 	
 	//관리자에서 클릭시 해당 신고물로 넘어가기 
 	@RequestMapping("/findReport.do")
-	public String findReport(@ModelAttribute("reportbbs") String reportbbs,@ModelAttribute("inqno") String inqno,
+	public String findReport(@ModelAttribute("reportbbs") String reportbbs,@ModelAttribute("inqno") String inqno,@ModelAttribute("ussrno") String ussrno,
 			@ModelAttribute("partyNo") String partyNo,@RequestParam Map map,Model model) {
 		
 		//넘어오는 게시판 키값 받기
 		model.addAttribute("reportbbs:"+reportbbs);
 		model.addAttribute("inqno:"+inqno);
 		model.addAttribute("partyNo:"+partyNo);
+		model.addAttribute("ussrno:"+ussrno);
 		
 		//문의게시판
 		if(reportbbs.equals("문의게시판")) {
@@ -125,6 +150,9 @@ public class ReportController {
 			return url;
 		} else if(reportbbs.equals("파티원게시판")) {
 			String url = "forward:/partyBbsView.do?partyNo="+partyNo;
+			return url;
+		} else if(reportbbs.equals("추천게시판") || reportbbs.equals("자유게시판")) {
+			String url = "forward:/ussrView.do?ussrno="+ussrno;
 			return url;
 		}
 		

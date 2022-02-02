@@ -26,10 +26,9 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value='/index.do'/>">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div>
+                    <img src="<%=request.getContextPath()%>/resources/logo/Nbread_01_2_cut.png" style="height:40px;"/>
                 </div>
-                <div class="sidebar-brand-text mx-3">Nbbang</div>
             </a>
 
             <!-- Divider -->

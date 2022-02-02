@@ -43,8 +43,6 @@
                                             <th>E-mail</th>
                                             <th>Title</th>
                                             <th>PostDate</th>
-                                            <th>수정</th>
-                                            <th>삭제</th>
                                             <th>바로가기</th>
                                         </tr>
                                     </thead>
@@ -61,8 +59,6 @@
 	                                            <td>${item.email }</td>
 	                                            <td>${item.inqtitle }</td>
 	                                            <td>${item.inqpostdate }</td>
-	                                            <td><a href="#" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-exclamation-triangle"></i></a></td>
-	                                            <td><a href="<c:url value='/OBODelete.do?inqno=${item.inqno}'/>" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a></td>
 	                                            <td><a href="<c:url value='/oneByOneBbsView.do?inqno=${item.inqno}&nowPage='/> <c:out value="${param.nowPage }" default="1"/>"  class="btn btn-info btn-circle btn-sm">
 	                                            	<i class="fas fa-info-circle"></i> 
 	                                            	</a>

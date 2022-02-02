@@ -20,7 +20,39 @@
 		width:90%;
 		padding-bottom:30px;
 	}
+	/* 광고 영역 */
+	.ad_one, .ad_two{
+		background-color:red;
+		width: 188.5px;
+		height:377px;
+		display: inline-block;
+		position: fixed;
+		top:150px;
+		background-size: cover;
+		background-position: center;
+		background-image: url("<%=request.getContextPath()%>/resources/account/ad_1.PNG");
+		animation: ad_one_ani 16s infinite;
+	}
+	
+	.ad_one{
+		left:30px;
+	}
+	
+	.ad_two{
+		right:30px;
+	}
+	
+	@keyframes ad_one_ani {
+		33%{background-image: url("<%=request.getContextPath()%>/resources/account/ad_2.PNG")}
+		66%{background-image: url("<%=request.getContextPath()%>/resources/account/ad_3.PNG")}
+		100%{background-image: url("<%=request.getContextPath()%>/resources/account/ad_1.PNG")}
+	}
 </style>
+
+<!-- 광고 1 -->
+<div class="ad_one">
+	
+</div>
 
 <div class="container">
 	<h1 style="margin:10px;font-family: 'Jua', sans-serif;margin-left:50px;color:#BEBEBE;">신고</h1>
@@ -44,7 +76,7 @@
                	   <option value="MY파티" <c:if test="${fn:contains(reportbbs,'파')}">selected</c:if>>MY파티</option>
                	   <option value="MY스케쥴" <c:if test="${fn:contains(reportbbs,'쥴')}">selected</c:if>>MY스케쥴</option>
                	   <option value="MY리포트" <c:if test="${fn:contains(reportbbs,'포')}">selected</c:if>>MY리포트</option>
-	               <option value="파티게시판" <c:if test="${fn:contains(reportbbs,'티')}">selected</c:if>>파티게시판</option>
+	               <option value="파티원게시판" <c:if test="${fn:contains(reportbbs,'티')}">selected</c:if>>파티원게시판</option>
                    <option value="추천게시판" <c:if test="${fn:contains(reportbbs,'천')}">selected</c:if>>추천게시판</option>
                    <option value="자유게시판" <c:if test="${fn:contains(reportbbs,'유')}">selected</c:if>>자유게시판</option>
                    <option value="문의게시판" <c:if test="${fn:contains(reportbbs,'문')}">selected</c:if>>문의게시판</option>
@@ -68,7 +100,7 @@
             <div class="col-sm-10">
                <div class="row">
                   <div class="col-sm-12">
-                     <textarea class="summernote" name="reportcontent"></textarea>  
+                     <textarea class="summernote" id="summernote" name="reportcontent"></textarea>  
                   </div>
                </div>
             </div>
@@ -76,12 +108,18 @@
          
          <div class="form-group" >
             <div class="col-sm-offset-2 col-sm-4">
-               <button class="btn btn-warning" onclick="submit()">신고하기</button>
+               <button class="btn btn-warning" id="submit" onclick="submit()">신고하기</button>
             </div>
          </div>
       </form>
    </div>
 </div>
+
+<!-- 광고 2 -->
+<div class="ad_two">
+	
+</div>
+
 
 <script>
    $('.summernote').summernote({
@@ -106,4 +144,22 @@
         
         
    });
+   
+   //유효성 체크
+   $('#submit').on('click',function(){
+	   var radioCheck = $('.custom-radio');
+	   if($(':radio[name="reporttype"]:checked').length < 1){
+		   alert('신고사유를 체크해 주세요.');
+		   radioCheck.focus();
+		   event.preventDefault();
+	   }
+	   
+	   var textCheck = $('#summernote').val();
+	   if( textCheck == ""  || textCheck == null || textCheck == '&nbsp;' || textCheck == '<p>&nbsp;</p>')  {
+           alert("신고 내용을 입력하세요.");
+           event.preventDefault();
+       }
+	   
+   })
+   
 </script>

@@ -67,17 +67,17 @@
 			<div class="form-group">
 	            <label class="col-sm-2 control-label">제목</label>
 	            <div class="col-sm-4">
-	               <input type="text" class="form-control" name="inqtitle" placeholder="제목을 입력하세요">
+	               <input type="text" class="form-control" id="inqtitle" name="inqtitle" placeholder="제목을 입력하세요">
 	            </div>
 	         </div>
 	         <div class="form-group">
 	            <label class="col-sm-2 control-label">닉네임</label>
 	            <div class="col-sm-4">
-	               <input type="text" class="form-control" name="nickname" value="${sessionScope.nickname}" disabled>
+	               <input type="text" class="form-control" name="nickname" value="${sessionScope.nickname}" readonly>
 	            </div>
 	            <label class="col-sm-2 control-label">이메일</label>
 	            <div class="col-sm-4">
-	               <input type="text" class="form-control" name="email" value="${sessionScope.email}" disabled>
+	               <input type="text" class="form-control" name="email" value="${sessionScope.email}" readonly>
 	            </div>
 	         </div>
 	         <div class="form-group">
@@ -94,7 +94,7 @@
 			<div class="btns1">
 				
 				<button class="btn btn-secondary" onclick="location.href='OBOList.do'" >취소</button>
-				<button class="btn btn-primary" onclick="submit()" >등록</button>
+				<button class="btn btn-primary" id="submit" onclick="submit()" >등록</button>
 			</div>
       </form>
       
@@ -115,6 +115,19 @@
 		
 	}
 	*/
+	$('#submit').on('click',function(){
+		if($('#inqtitle').val() == ''){
+			alert('제목을 입력하세요.');
+			return false;
+		}
+		if($('.summernote').val() == ''){
+			alert('내용을 입력하세요.');
+			return false;
+		}
+		
+		
+	})
+	
 	$('.summernote')
 			.summernote(
 					{

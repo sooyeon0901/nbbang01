@@ -307,6 +307,7 @@
 						<div id="buttonArea" class="row">
 							<div class="col-md-12 text-right">
 							<div class="blankSpace"></div>
+								<a href="javascript:isDelete(${record.partyNo });" class="btn btn-warning">삭제</a>
 								<a href="<c:url value="#"/>" class="btn btn-primary" onclick="javascript:setClosedParty();">마감하기</a>
 								<a href="#" class="btn btn-warning"  onclick="javascript:setBlackMember();">회원정지</a>
 								<div class="blankSpace"></div>
@@ -324,6 +325,13 @@
 </body>
 
 <script>
+	function isDelete(partyNo) {
+		if (confirm("정말로 삭제 하시겠습니까?")) {
+			location.replace("<c:url value='/partyBbsDelete.do?partyNo='/>"
+					+ partyNo);
+		}
+	}
+	
 	function setBlackMember(){
 		if(confirm("정말로 회원 정지를 진행하시겠습니까?")){
 			location.replace("<c:url value='/partyBlackMember.do?email=${record.email}'/>");

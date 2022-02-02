@@ -22,12 +22,16 @@ public class ReportDAO {
 	public int insert(Map map) {	
 		return template.insert("reportInsert", map);
 	}//insert
+	
 	public int insertParty(Map map) {
 		return template.insert("reportInsertParty", map);
 	}
 
 	public int insert404(Map map) {
 		return template.insert("reportInsert404", map);
+	}
+	public int insertUssr(Map map) {
+		return template.insert("reportInsertUssr", map);
 	}
 
 	public int getTotalRowCount(Map map) {
@@ -45,6 +49,7 @@ public class ReportDAO {
 		
 		return lists;
 	}
+	
 
 	
 

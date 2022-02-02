@@ -273,13 +273,13 @@
 	
 	function isReport(){
 		if(confirm("정말로 신고하시겠습니까?")){
-			location.replace("<c:url value='/oboReport.do?ussrno=${record.ussrno}&ussrtitle=${record.ussrtitle}&email=${record.email}&ussrpostdate=${record.ussrpostdate}&ussrcontent=${record.ussrcontent}'/>");
+			location.replace("<c:url value='/ussrReport.do?ussrno=${record.ussrno}&ussrtitle=${record.ussrtitle}&email=${record.email}&ussrpostdate=${record.ussrpostdate}&ussrcontent=${record.ussrcontent}'/>");
 		}
 	}
 	
 	function setBlackMember(){
 		if(confirm("정말로 회원 정지를 하시겠습니까?")){
-			
+			location.replace("<c:url value='/partyBlackMember.do?email=${record.email}'/>");
 		}
 	}
 	

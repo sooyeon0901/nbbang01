@@ -16,7 +16,11 @@ public class IndexController {
 	public String handlerMapping() {
 		return "index.tiles";
 	}
-	
+	//챗봇
+	@RequestMapping("/chatbot.do")
+	public String chatbot() {
+		return "chatbot";
+	}
 	
 	//로그인
 	@RequestMapping("/login.do")
@@ -78,10 +82,10 @@ public class IndexController {
 	
 	/************************      ****************************/
 	//내 스케쥴
-	@RequestMapping("/mySchedule.do")
+	/*@RequestMapping("/mySchedule.do")
 	public String mySchedule() {
 		return "schedule/MySchedule.tiles";
-	}
+	}*/
 
 	/*
 	//내 리포트
@@ -165,6 +169,7 @@ public class IndexController {
 	public String oneByOneBbsModify() {
 		return "guide/onebyoneqna/OneByOneBbsModify.tiles";
 	}
+	
 	/*
 	@RequestMapping("/oneByOneBbsView.do")
 	public String oneByOneBbsView() {

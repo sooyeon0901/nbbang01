@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nbbang.mybatis.mapper.adminreport">
+	<resultMap type="AdminReportDTO" id="AdminReportDTO">
+	
+		<result column="email" property="email"/>
+		<result column="partyno" property="partyno"/>
+		<result column="activation" property="activation"/>
+		<result column="inqno" property="inqno"/>
+		<result column="reportno" property="reportno"/>
+		<result column="ussrno" property="ussrno"/>
+		<result column="ussrpostdate" property="ussrpostdate"/>
+		<result column="usertype" property="usertype"/>	
+		<result column="partypostdate" property="partypostdate"/>	
+		<result column="gender" property="gender"/>	
+		<result column="membercount" property="membercount"/>	
+		<result column="matchcount" property="matchcount"/>	
+		<result column="inqcount" property="inqcount"/>	
+		<result column="reportcount" property="reportcount"/>
+		<result column="gendercount" property="gendercount"/>	
+		<result column="usertypecount" property="usertypecount"/>
+		<result column="usertypecount" property="usertypecount"/>
+		<result column="usertypecount" property="usertypecount"/>
+	</resultMap>
+	<!-- 회원수 -->
+	<select id="selectMemberCount" parameterType="map" resultType="AdminReportDTO">
+		SELECT COUNT(*) as membercount 
+		FROM member WHERE gender != 'admin'
+	</select>
+	
+	<!-- 매칭성사수 -->
+	<select id="selectMatchCount" parameterType="Map" resultType="AdminReportDTO">
+		SELECT COUNT(*) as matchcount 
+		FROM partybbs WHERE partyactivation='false'
+	</select>
+	
+	<!-- 문의수 -->
+	<select id="selectInqCount" parameterType="Map" resultType="AdminReportDTO">
+		SELECT COUNT(*) as inqcount 
+		FROM inquirybbs
+	</select>
+	
+	<!-- 신고수 -->
+	<select id="selectReportCount" parameterType="Map" resultType="AdminReportDTO">
+		SELECT COUNT(*) as reportcount 
+		FROM report
+	</select>
+	
+	<!-- 시간대별(월별) ussrbbs게시글 수 추이 -->
+	<select id="selectUssrCount" parameterType="Map" resultType="AdminReportDTO">
+		<!--  
+		SELECT to_char(ussrpostdate,'yyyy-mm') as postdate
+			,sum(ussrno) as ussrcount
+			,nvl(count(*), 0) as mondata
+		FROM ussrbbs
+		WHERE to_char(ussrpostdate, 'YYYY') = to_char(SYSDATE,'YYYY') 
+		GROUP BY to_char(ussrpostdate,'yyyy'),to_char(ussrpostdate,'yyyy-mm')
+		ORDER BY to_char(ussrpostdate,'yyyy-mm')
+		 
+		SELECT to_char(ussrpostdate,'yyyy-mm') as paymentmon
+			,nvl(count(ussrno),0) as mondata
+		FROM ussrbbs
+		WHERE to_char(ussrpostdate, 'YYYY') = to_char(SYSDATE,'YYYY') 
+		GROUP BY to_char(ussrpostdate,'yyyy'),to_char(ussrpostdate,'yyyy-mm')
+		ORDER BY to_char(ussrpostdate,'yyyy-mm')
+		-->
+		SELECT TO_CHAR(b.dt, 'YYYY-MM') AS paymentmon
+		     , NVL(SUM(a.cnt), 0) mondata
+		  FROM ( SELECT TO_CHAR(ussrpostdate, 'YYYY-MM-DD') AS paymentmon
+		              , COUNT(*) cnt
+		           FROM ussrbbs
+		          WHERE ussrpostdate BETWEEN TO_DATE('2022-01-01', 'YYYY-MM-DD')
+		                             AND TO_DATE('2022-12-31', 'YYYY-MM-DD') 
+		          GROUP BY ussrpostdate
+		        ) a
+		      , ( SELECT TO_DATE('2022-01-01','YYYY-MM-DD') + LEVEL - 1 AS dt
+		            FROM dual 
+		         CONNECT BY LEVEL &lt;= (TO_DATE('2022-12-31','YYYY-MM-DD') 
+		                            - TO_DATE('2022-01-01','YYYY-MM-DD') + 1)
+		        ) b
+		  WHERE b.dt = a.paymentmon(+)
+		  GROUP BY TO_CHAR(b.dt, 'YYYY-MM')
+		  ORDER BY TO_CHAR(b.dt, 'YYYY-MM')
+	</select>
+	
+	<!-- 가입자 경로(원그래프) -->
+	<select id="selectUserType" parameterType="Map" resultType="AdminReportDTO">
+		SELECT usertype
+			,count(usertype) as usertypecount
+		FROM member
+		GROUP BY usertype
+		ORDER BY count(usertype)
+	</select>
+	
+	<!-- 시간대별(월별) 매핑 수 추이 --><!-- check -->
+	<select id="selectPartyCount" parameterType="Map" resultType="AdminReportDTO">
+		SELECT TO_CHAR(b.dt, 'YYYY-MM') AS partypostmon
+		     , NVL(SUM(a.cnt), 0) matchcount
+		  FROM ( SELECT TO_CHAR(partymatchdate, 'YYYY-MM-DD') AS partypostmon
+		              , COUNT(*) cnt
+		           FROM partybbs
+		          WHERE partymatchdate BETWEEN TO_DATE('2022-01-01', 'YYYY-MM-DD')
+		                             AND TO_DATE('2022-12-31', 'YYYY-MM-DD') 
+                    AND not partymatchdate is null
+		          GROUP BY partymatchdate
+		        ) a
+		      , ( SELECT TO_DATE('2022-01-01','YYYY-MM-DD') + LEVEL - 1 AS dt
+		            FROM dual 
+		         CONNECT BY LEVEL &lt;= (TO_DATE('2022-12-31','YYYY-MM-DD') 
+		                            - TO_DATE('2022-01-01','YYYY-MM-DD') + 1)
+		        ) b
+		  WHERE b.dt = a.partypostmon(+) 
+		  GROUP BY TO_CHAR(b.dt, 'YYYY-MM')
+		  ORDER BY TO_CHAR(b.dt, 'YYYY-MM')
+		
+	</select>
+	
+	<!-- 회원성별 -->
+	<select id="selectGenderCount" parameterType="Map" resultType="AdminReportDTO">
+		SELECT gender,
+			count(gender) as gendercount
+		FROM member
+		WHERE gender != 'admin'
+		GROUP BY gender
+		ORDER BY count(gender)
+	</select>
+	
+</mapper>

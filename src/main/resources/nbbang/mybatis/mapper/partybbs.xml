@@ -135,4 +135,10 @@
 		bbswriter= #{bbswriter}
 	</select>
 	
+	<!-- 아이디 중복 체크 -->
+	<select id="categoryCheck" resultType="int">
+		SELECT COUNT(*) FROM partybbs
+		WHERE partycategoryname = #{partyCategoryName} and email = #{email}
+	</select>
+	
 </mapper> 

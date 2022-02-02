@@ -41,7 +41,7 @@
          <div class="form-group" style="margin-top:100px;">
          <span>${errorMessage}</span>
             <label class="col-sm-2 control-label">회원 e-mail</label>
-               <input type="text" class="form-control" name="email" style="width:400px;margin-bottom:20px;">
+               <input type="text" class="form-control" name="email" style="width:400px;margin-bottom:20px;" value="${sessionScope.email}" readonly>
             <label class="col-sm-2 control-label">회원 password</label>
                <input type="password" class="form-control" name="password" style="width:400px">
          </div>
@@ -58,7 +58,7 @@
             </div>
           </div>
          <div class="btns1" style="margin-top:20px;margin-bottom:100px;">
-               <button class="btn btn-warning" onclick="submit()">제출하기</button>
+               <button class="btn btn-warning" id="submit" onclick="submit()">제출하기</button>
                <button class="btn btn-secondary" onclick="location.href='index.do'">취소</button>
          </div>
       </form>
@@ -66,5 +66,12 @@
 </div>
 
 <script>
-
+	$('#submit').on('click',function(){
+		if(confirm('정말 회원탈퇴를 하시겠어요?') == true){
+			alert('회원탈퇴 처리가 완료되었습니다. 다음에 다시 만나요.');	
+		} else{
+			return;
+		}
+		 
+	})
 </script>

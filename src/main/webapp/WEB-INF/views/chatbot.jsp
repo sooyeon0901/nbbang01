@@ -155,7 +155,7 @@
 						 })
 						 
 					 });
-					 $('.chat-container').append('<div id="customer" class="chat-message col-md-5 bot-message"><ul>'+list+'</ul><br/>또다른 정보를 원하세요?</div>')
+					 $('.chat-container').append('<div id="nbbang" style="display:block;" class="chat-message col-md-5 bot-message"><ul>'+list+'</ul><br/>또다른 취향을 원하세요?</div>')
 					 //스크롤바 아래로
 				     $(".chat-container").scrollTop($(".chat-container")[0].scrollHeight);
 					 
@@ -180,7 +180,7 @@
 						 })
 						 
 					 });
-					 $('.chat-container').append('<div id="customer" class="chat-message col-md-5 bot-message"><ul>'+list+'</ul><br/>또다른 정보를 원하세요?</div>')
+					 $('.chat-container').append('<div id="nbbang" style="display:block;" class="chat-message col-md-5 bot-message"><ul>'+list+'</ul><br/>또다른 취향을 원하세요?</div>')
 					 //스크롤바 아래로
 				     $(".chat-container").scrollTop($(".chat-container")[0].scrollHeight);
 					 

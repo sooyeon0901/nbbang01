@@ -102,6 +102,7 @@
 		margin:auto;
 		text-align:center;
 		color:black;
+		padding-top:50px;
 	}
 </style>
 
@@ -117,8 +118,9 @@
 	<div style="text-align:center;">
 		<img id="nbbang_chatbot" src="<%=request.getContextPath()%>/resources/logo/Nbread_02_2_cut.png" style="width:80px;height:100px;cursor:pointer;"/>
 	</div>
-	<hr class="col-md-12" style="width:900px;margin-left:50px;"/>
+	<hr class="col-md-12" style="width:1080px;margin-left:50px;"/>
 	
+	<h2 style="margin:10px;font-family: 'Jua', sans-serif;margin-left:50px;color:#BEBEBE;">배우의 이미지를 넣으면 [넷플릭스와 왓챠]를 검색해서 결과를 알려 줍니다.</h2>
 	
 	
    <div class="containerAnalysis">

@@ -834,14 +834,11 @@
 			<div class="sectionContent">
 				<div class="row nino-hoverEffect">
 				
-				<div>
-					<div class="col-md-3 col-sm-3">
+				
+					<div class="col-md-2 col-sm-2">
 						<div class="item">
 							<div class="overlay" href="#">
 								<div class="content">
-									<a href="#" class="nino-icon"><i class="mdi mdi-facebook"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-twitter"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-pinterest"></i></a>
 									<a href="#" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
 								</div>
 								<img src="<%=request.getContextPath()%>/resources/images/our-team/team01.jpeg" alt="">
@@ -852,30 +849,10 @@
 							<span class="regency"></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-3">
+					<div class="col-md-2 col-sm-2">
 						<div class="item">
 							<div class="overlay" href="#">
 								<div class="content">
-									<a href="#" class="nino-icon"><i class="mdi mdi-facebook"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-twitter"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-pinterest"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
-								</div>
-								<img src="<%=request.getContextPath()%>/resources/images/our-team/team02.png" alt="">
-							</div>
-						</div>
-						<div class="info">
-							<h4 class="name">Soo</h4>
-							<span class="regency"></span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-3">
-						<div class="item">
-							<div class="overlay" href="#">
-								<div class="content">
-									<a href="#" class="nino-icon"><i class="mdi mdi-facebook"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-twitter"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-pinterest"></i></a>
 									<a href="#" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
 								</div>
 								<img src="<%=request.getContextPath()%>/resources/images/our-team/team03.png" alt="">
@@ -886,13 +863,10 @@
 							<span class="regency"></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-3">
+					<div class="col-md-2 col-sm-2">
 						<div class="item">
 							<div class="overlay" href="#">
 								<div class="content">
-									<a href="#" class="nino-icon"><i class="mdi mdi-facebook"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-twitter"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-pinterest"></i></a>
 									<a href="#" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
 								</div>
 								<img src="<%=request.getContextPath()%>/resources/images/our-team/team04.png" alt="">
@@ -903,35 +877,10 @@
 							<span class="regency"></span>
 						</div>
 					</div>
-				</div>
-					
-				<span class="nino-subHeading" style="color:#fff;">줄간격..</span>
-					
-				<div>
-					<div class="col-md-3 col-sm-3">
+					<div class="col-md-2 col-sm-2">
 						<div class="item">
 							<div class="overlay" href="#">
 								<div class="content">
-									<a href="#" class="nino-icon"><i class="mdi mdi-facebook"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-twitter"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-pinterest"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
-								</div>
-								<img src="<%=request.getContextPath()%>/resources/images/our-team/team05.png" alt="">
-							</div>
-						</div>
-						<div class="info">
-							<h4 class="name">Park</h4>
-							<span class="regency"></span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-3">
-						<div class="item">
-							<div class="overlay" href="#">
-								<div class="content">
-									<a href="#" class="nino-icon"><i class="mdi mdi-facebook"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-twitter"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-pinterest"></i></a>
 									<a href="#" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
 								</div>
 								<img src="<%=request.getContextPath()%>/resources/images/our-team/team06.jpeg" alt="">
@@ -941,14 +890,12 @@
 							<h4 class="name">Jung</h4>
 							<span class="regency"></span>
 						</div>
+						
 					</div>
-					<div class="col-md-3 col-sm-3">
+					<div class="col-md-2 col-sm-2">
 						<div class="item">
 							<div class="overlay" href="#">
 								<div class="content">
-									<a href="#" class="nino-icon"><i class="mdi mdi-facebook"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-twitter"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-pinterest"></i></a>
 									<a href="#" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
 								</div>
 								<img src="<%=request.getContextPath()%>/resources/images/our-team/team07.jpeg" alt="">
@@ -959,13 +906,10 @@
 							<span class="regency"></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-3">
+					<div class="col-md-2 col-sm-2">
 						<div class="item">
 							<div class="overlay" href="#">
 								<div class="content">
-									<a href="#" class="nino-icon"><i class="mdi mdi-facebook"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-twitter"></i></a>
-									<a href="#" class="nino-icon"><i class="mdi mdi-pinterest"></i></a>
 									<a href="#" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
 								</div>
 								<img src="<%=request.getContextPath()%>/resources/images/our-team/team08.png" alt="">
@@ -976,12 +920,69 @@
 							<span class="regency"></span>
 						</div>
 					</div>
+						
+						
+					<span class="nino-subHeading" style="color:#fff;">줄간격..</span>
+				
+					<div>
+						<div class="col-md-2 col-sm-2" style="margin-left:297px;">
+							<div class="item">
+								<div class="overlay" href="#">
+									<div class="content">
+										<a href="#" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
+									</div>
+									<img src="<%=request.getContextPath()%>/resources/images/our-team/team05.png" alt="">
+								</div>
+							</div>
+							<div class="info">
+								<h4 class="name">Park</h4>
+								<span class="regency"></span>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-2">
+							<div class="item">
+								<div class="overlay" href="#">
+									<div class="content">
+										<a href="#" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
+									</div>
+									<img src="<%=request.getContextPath()%>/resources/images/our-team/team02.png" alt="">
+								</div>
+							</div>
+							<div class="info">
+								<h4 class="name">Soo</h4>
+								<span class="regency"></span>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-2">
+							<div class="item">
+								<div class="overlay" href="#">
+									<div class="content">
+										<a href="#" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
+									</div>
+									<img src="<%=request.getContextPath()%>/resources/images/our-team/team09.png" alt="">
+								</div>
+							</div>
+							<div class="info">
+								<h4 class="name">Ran</h4>
+								<span class="regency"></span>
+							</div>
+						</div>
+					</div>
+						
+						
+						
+						
+				
+					
 				</div>
+					
+				
+				
+				
 				
 				
 				</div>
 			</div>
-		</div>
 	</section><!--/#nino-ourTeam-->
 
 	<!-- Brand

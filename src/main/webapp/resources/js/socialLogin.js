@@ -55,12 +55,12 @@ let social = {
 	},
 	google: {
 		data: {
-			clientId: '84685836012-liev1gs62jmnf58m5k4iq7bd04usemdd.apps.googleusercontent.com',
-			apikey: 'AIzaSyBgKOkGBmgxWmc2hG9djzgIj_vl4PpFWXY',
+			clientId: '525611982826-fkkunrkjsnk4l6kot2df7sqrljl0akbq.apps.googleusercontent.com',
+			apikey: 'AIzaSyAjaR7CjleXxncouVetvcOChc_JVAPJNnI',
 		},
 		init: function(elId) {
 			gapi.load('auth2', function() {
-				gapi.auth2.init({ client_id: social.google.data.clientId });
+				gapi.auth2.getAuthInstance({ client_id: social.google.data.clientId });
 				let options = new gapi.auth2.SigninOptionsBuilder();
 				options.setPrompt('select_account');
 				options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');

@@ -50,7 +50,6 @@
 											<th>Preference</th>
 											<th>Registdate</th>
 											<th>Authority</th>
-											<th>회원정지</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -67,7 +66,6 @@
 													<td>${dto.preference}</td>
 													<td>${dto.registdate}</td>
 													<td>${dto.authority}</td>
-													<td class="emailSubmit"><a href="#" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-exclamation-triangle" ></i></a></td>
 												</tr>
 											</c:forEach>
 										</c:if>

@@ -2,7 +2,7 @@ package com.kosmo.nbbang.hwang.service;
 
 import lombok.Getter;
 import lombok.Setter;
-
+/*
 @Getter
 @Setter
 public class UssrCommentDTO {
@@ -17,7 +17,7 @@ public class UssrCommentDTO {
 	// 닉네임뿌려주기용
 	private String nickname;
 }
-/*
+*/
 public class UssrCommentDTO {
 	private String comno;
 	private String comcontent;
@@ -95,4 +95,4 @@ public class UssrCommentDTO {
 	}
 
 }
-*/
+

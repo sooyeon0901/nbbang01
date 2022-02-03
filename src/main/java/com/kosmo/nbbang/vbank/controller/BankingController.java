@@ -1,6 +1,7 @@
 package com.kosmo.nbbang.vbank.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -29,6 +30,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kosmo.nbbang.util.MyUtils;
 import com.kosmo.nbbang.vbank.service.BankingService;
 import com.kosmo.nbbang.vbank.service.InnerService;
 import com.kosmo.nbbang.vbank.service.ResponeCode;
@@ -44,6 +46,8 @@ public class BankingController {
 	BankingService bankingservice;
 	@Autowired
 	InnerService innerservice;
+	@Autowired
+	MyUtils myutils;
 	
 	/*
 	 * 
@@ -55,11 +59,16 @@ public class BankingController {
 		map.put("email", session.getAttribute("email").toString());
 		Map<String,String> res = innerservice.getAuth(map);
 //		res.put("email", session.getAttribute("email").toString());
-		res.put("location",map.get("location").toString());
+		System.out.println(map.get("location"));
+		
 		if( res !=null) {
+			res.put("location",map.get("location").toString());
 			for(Map.Entry<String, String> entry : res.entrySet()) {
 				System.out.println(entry.getKey() + " - " + String.valueOf(entry.getValue()));
 			}
+		}else {
+			res = new HashMap<String, String>();
+			res.put("location",map.get("location").toString());
 		}
 		
 		System.out.println("getUrl메소드 진입");
@@ -136,6 +145,10 @@ public class BankingController {
 		res.put("fintech_use_num", map.get("fintech_use_num"));
 		JSONArray test = bankingservice.getTradingStatement(res);
 		System.out.println(test);
+		List<String> check =  myutils.getRegularTransaction(test);
+		for(String data : check) {
+			System.out.println(data);
+		}
 		return test.toString();
 	}
 	

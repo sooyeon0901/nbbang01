@@ -24,6 +24,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kosmo.nbbang.aoputils.NumUtils;
@@ -140,6 +141,7 @@ public class BankingServiceImpl implements BankingService {
 
 		// Test
 
+		
 		String authorization = map.get("ACCESS_TOKEN").toString();
 		String user_seq_no = map.get("USER_SEQ_NO").toString();
 
@@ -241,15 +243,16 @@ public class BankingServiceImpl implements BankingService {
 		HttpEntity<String> entity = new HttpEntity("", headers);
 		System.out.println(entity.getHeaders());
 		RestTemplate rt = new RestTemplate();
-		ResponseEntity<List> response = rt.exchange(url, HttpMethod.GET, entity, List.class);
+		ResponseEntity<String> response = rt.exchange(url, HttpMethod.GET, entity, String.class);
 
 		System.out.println("??? :" + response.getBody());
 //		if(response.getBody().size() ==0) {
 //			result.put(new JSONObject("msg", "거래내역이 없습니다."));
 //			return result;
 //		}
-		
-		JSONArray json_arr = new JSONArray(response.getBody());
+		JSONObject test = new JSONObject(response.getBody());
+
+		JSONArray json_arr = new JSONArray(test.get("res_list").toString());
 		System.out.println(json_arr.toString());
 //		result = (Map) response.getBody().get(0);
 		System.out.println("result :" + result);

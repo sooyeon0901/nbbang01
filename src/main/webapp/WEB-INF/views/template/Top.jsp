@@ -117,7 +117,7 @@
 				<a href="<c:url value='resignPage.do'/>">
 					<button type="button" id="savebutton" class="btn btn-primary">회원탈퇴</button>
 				</a>
-				<button type="button" id="closebutton" class="btn btn-secondary"
+				<button type="button" id="closebtn" class="btn btn-secondary"
 					data-bs-dismiss="small-modal" >취소</button>
 			</div>
 		</div>
@@ -228,6 +228,10 @@
 			
 			$('#closebutton').on('click',function(){
 				$('#small-modal').css('display','none');
+			});
+			
+			$('#closebtn').on('click',function(){
+				$('.resignModal').css('display','none');
 			});
 			
 			$('#memberResign').on('click',function(){

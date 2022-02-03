@@ -150,7 +150,7 @@
 	</section>
 	<script>
 	$(function () {
-		social.kakao.init();
+		//social.kakao.init();
 		social.google.init("googleBtn");
 	});
 	

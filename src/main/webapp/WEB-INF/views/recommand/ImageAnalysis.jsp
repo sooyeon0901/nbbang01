@@ -104,6 +104,15 @@
 		color:black;
 		padding-top:50px;
 	}
+	#dragNdrop{
+		outline: 2px dashed #92b0b3 ;
+	    outline-offset:-10px;  
+	    text-align: center;
+	    transition: all .15s ease-in-out;
+	    width: 300px;
+	    height: 300px;
+	    background-color: gray;
+	}
 </style>
 
 <!-- 광고 1 -->
@@ -126,8 +135,11 @@
    <div class="containerAnalysis">
 	    <h1 id="todo">필모그라피가 궁금한 배우의 사진을 넣어주세요.</h1>
 	    
+	    <!-- <div id="dragNdrop"></div>-->
+	    
 		<img id="preview_image" src="<%=request.getContextPath()%>/resources/account/image_basic.png"/>
-		<input type="file" id="test_image" accept=".png,.jpg,.jpeg" multiple/>
+		
+		<input type="file" id="test_image" accept=".png,.jpg,.jpeg" multiple/> 
 		<div class="btnWrap">
 			<button class="btn btn-warning" id="btnCheck" type="button" onclick="predict()">확인하기</button>
 			<a id="btnRe"><img src="<%=request.getContextPath()%>/resources/account/restart.png" style="width:30px;margin-left:10px;"/></a>
@@ -162,7 +174,83 @@
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 	<script type="text/javascript">
-	
+		/*
+		//드래그앤드롭
+		$('#dragNdrop').on('dragover',dragOver).on("dragleave", dragOver).on("drop", uploadFiles);
+		
+			function dragOver(e){
+			  e.stopPropagation();
+			  e.preventDefault();
+			  
+			  console.log('드래그 오버진입');
+			  //previewImage(this);
+			  
+			  if (e.type == "dragover") {
+			        $(e.target).css({
+			            "background-color": "black",
+			            "outline-offset": "-20px"
+			        });
+			        
+			        e.dataTransfer = e.originalEvent.dataTransfer; //2
+				    var files = e.target.files || e.dataTransfer.files;
+			        
+			        if(files){
+			    		console.log('files',files);
+			    		//console.log('files[0]',files[0]);
+			    		//console.log('files.name',files.name);
+			    		
+			    		var reader = new FileReader();
+			    		//console.log(reader.readAsText(input.files[0],'UTF-8'));
+			    		reader.readAsDataURL(files); //이미지 파일을 URL로 읽기
+			    		reader.onload = function(e){
+			    			//읽기 동작이 완료 됐을 때 실행됨
+			    			console.log('e.target:',e.target); //FileReader객체
+			    			console.log('e.target.result:',e.target.result); //읽은 파일 내용 url
+			    			//$('#preview_image').prop("src",e.target.result); //미리보기 구현
+			    		}
+			    	}
+			        
+			    } else {
+			        $(e.target).css({
+			            "background-color": "gray",
+			            "outline-offset": "-10px"
+			        });
+			    }
+			  
+			}
+			 
+			function uploadFiles(e){
+			  e.stopPropagation();
+			  e.preventDefault();
+			  dragOver(e); //1
+			  
+			    e.dataTransfer = e.originalEvent.dataTransfer; //2
+			    var files = e.target.files || e.dataTransfer.files;
+			    
+			    console.log(files);
+			    
+			    if (files.length > 1) {
+			        alert('한 개의 이미지만 올리세요.');
+			        return;
+			    }
+			    if (files[0].type.match(이미지)) {
+			    	
+			    	console.log('파일진입');
+			    	
+	                $(e.target).css({
+		            "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
+		            "outline": "none",
+		            "background-size": "100% 100%"
+				        });
+				    }else{
+				      alert('이미지가 아닙니다.');
+				      return;
+				    }
+			    
+			}
+			출처:https://kutar37.tistory.com/entry/HTML5-Javasciprt-DragDrop-%EA%B5%AC%ED%98%84-%EC%98%88%EC%A0%9C
+		*/	
+			
 		//챗봇 창 띄우기
 		$('#nbbang_chatbot').on('click',function(){
 			window.open("chatbot.do",'_blank','width=600,height=800,menubar=false');
@@ -211,13 +299,17 @@
 	    // run the webcam image through the image model
 	    async function predict() {
 			//빈값일 때 유효성 검증
+			
 	        if($('#test_image').val() == ""){
 				alert('이미지 파일을 선택하세요.');
 				return false;
 			}
+			
 	        // predict can take in an image, video or canvas html element
 	        //const prediction = await model.predict(webcam.canvas);
+			
 	        var image = document.getElementById('preview_image');
+	        //var dragNdrop = document.getElementById('dragNdrop');
 	        var prediction = await model.predict(image,false);
 	        console.log('prediction',prediction);
 	        
@@ -416,6 +508,8 @@
 	    $('#test_image').on('change',function(){
 	    	previewImage(this);
 	    })
+	    
+	    
 	    
 	    $('#btnRe').on('click',function(){
 	    	location.reload();
